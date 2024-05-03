@@ -1,0 +1,790 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1.5;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* root variables  */
+
+:root {
+  /* Margins and Paddings */
+  --spacing-xs: 4px;
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+
+  /* Main Colors */
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #f2f2f2;
+  --text-color: #333;
+
+  /* Button Colors */
+  --button-bg-color: var(--dark-moss-green);
+  --button-text-color: #fff;
+
+  /* Font Size */
+  --font-size-small: clamp(14px, 1.6vw, 16px);
+  --font-size-medium: clamp(16px, 2vw, 18px);
+  --font-size-large: clamp(18px, 2.4vw, 20px);
+  --font-size-xlarge: clamp(50px, 2.8vw, 72px);
+}
+
+/* CSS HEX */
+:root {
+  --dark-moss-green: #345b10ff;
+  --fern-green: #4c711cff;
+  --black: #000000ff;
+  --dark-moss-green-2: #284700ff;
+  --drab-dark-brown: #3b3b26ff;
+}
+
+/* CSS HSL */
+:root {
+  --dark-moss-green: hsla(91, 70%, 21%, 1);
+  --fern-green: hsla(86, 60%, 28%, 1);
+  --black: hsla(0, 0%, 0%, 1);
+  --dark-moss-green-2: hsla(86, 100%, 14%, 1);
+  --drab-dark-brown: hsla(60, 22%, 19%, 1);
+}
+
+/* SCSS HEX */
+:root {
+  --dark-moss-green: #345b10ff;
+  --fern-green: #4c711cff;
+  --black: #000000ff;
+  --dark-moss-green-2: #284700ff;
+  --drab-dark-brown: #3b3b26ff;
+}
+
+/* SCSS HSL */
+:root {
+  --dark-moss-green: hsla(91, 70%, 21%, 1);
+  --fern-green: hsla(86, 60%, 28%, 1);
+  --black: hsla(0, 0%, 0%, 1);
+  --dark-moss-green-2: hsla(86, 100%, 14%, 1);
+  --drab-dark-brown: hsla(60, 22%, 19%, 1);
+}
+
+/* SCSS RGB */
+:root {
+  --dark-moss-green: rgba(52, 91, 16, 1);
+  --fern-green: rgba(76, 113, 28, 1);
+  --black: rgba(0, 0, 0, 1);
+  --dark-moss-green-2: rgba(40, 71, 0, 1);
+  --drab-dark-brown: rgba(59, 59, 38, 1);
+}
+
+/* SCSS Gradient */
+:root {
+  --gradient-top: linear-gradient(0deg, #345b10ff, #4c711cff, #000000ff, #284700ff, #3b3b26ff);
+  --gradient-right: linear-gradient(90deg, #345b10ff, #4c711cff, #000000ff, #284700ff, #3b3b26ff);
+  --gradient-bottom: linear-gradient(180deg, #345b10ff, #4c711cff, #000000ff, #284700ff, #3b3b26ff);
+  --gradient-left: linear-gradient(270deg, #345b10ff, #4c711cff, #000000ff, #284700ff, #3b3b26ff);
+  --gradient-top-right: linear-gradient(45deg, #345b10ff, #4c711cff, #000000ff, #284700ff, #3b3b26ff);
+  --gradient-bottom-right: linear-gradient(135deg, #345b10ff, #4c711cff, #000000ff, #284700ff, #3b3b26ff);
+  --gradient-top-left: linear-gradient(225deg, #345b10ff, #4c711cff, #000000ff, #284700ff, #3b3b26ff);
+  --gradient-bottom-left: linear-gradient(315deg, #345b10ff, #4c711cff, #000000ff, #284700ff, #3b3b26ff);
+  --gradient-radial: radial-gradient(#345b10ff, #4c711cff, #000000ff, #284700ff, #3b3b26ff);
+}
+
+/* Reset some default styles */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Apply basic styles to the landing page */
+.landing-page {
+  font-family: "Arial", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style the header */
+.landing-page header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+/* Style the logo */
+.landing-page [name="logo"] {
+  max-width: 100px; /* Adjust as needed */
+  height: auto;
+}
+
+/* Style the main content */
+.landing-page main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  /* padding: 20px 0; */
+  min-height: 100vh; /* Adjust automatically with content */
+}
+
+/* Style the footer */
+.landing-page footer {
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  background-color: var(--dark-moss-green);
+  color: var(--background-color);
+  width: 100%;
+}
+
+/* Global styles */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* button css  */
+
+button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #3d405b;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 17px;
+  padding: 16px;
+  width: 130px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+button span:after {
+  content: "»";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+}
+
+button:hover span {
+  padding-right: 15px;
+}
+
+button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* nav  */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: #fefefe; */
+  background-color:hsla(86, 60%, 28%, 1);
+
+  padding: 10px;
+  width: 100%;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+}
+
+/* logo */
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.logo-placeholder {
+  width: 150px;
+  height: auto;
+}
+
+/* Hero section styles */
+.hero {
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: flex-start; */
+  gap: var(--spacing-m);
+  background-color: #fefefe;
+  padding: 40px;
+  height: 60vh;
+  border: 1px solid #eee;
+}
+
+.hero h3 {
+  font-size: var(--font-size-xlarge);
+  font-weight: bolder;
+  line-height: 1.2;
+  font-style: normal;
+  margin-bottom: 15px;
+  text-align: left;
+  margin-left: var(--spacing-xl);
+  margin-right: var(--spacing-xl);
+}
+
+.hero p {
+  font-size: 1.5em;
+  line-height: 1.5;
+  text-align: left;
+  margin-left: var(--spacing-xl);
+  margin-right: var(--spacing-xl);
+}
+
+.hero button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.hero .image-container {
+  border: 2px solid #fdfdfd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.1);
+  transition: transform 0.3s ease;
+  z-index: 99999;
+  margin: 20px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero .image-container:hover {
+  transform: scale(1.05);
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.1);
+}
+
+.hero .description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.left-aligned-button {
+  align-self: flex-start;
+  margin-left: 30px;
+}
+
+/* Style for the testimonials section */
+.testimonials {
+  text-align: center;
+  padding: 20px;
+}
+
+.testimonials h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.testimonial-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background-color: var(--gradient-top-left);
+}
+
+/* Style for individual testimonial cards */
+card {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+card p {
+  margin-bottom: 10px;
+}
+
+card span {
+  font-style: italic;
+  display: block;
+  margin-top: 15px;
+}
+
+card .position {
+  font-weight: bold;
+  font-size: var(--spacing-l);
+}
+
+/* Responsive styling */
+@media screen and (max-width: 600px) {
+  .testimonial-cards {
+    flex-direction: column;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+}
+
+/* Apply a basic style to the section */
+.solutions {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1400px;
+  position: relative;
+}
+
+.solutions ul {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style the heading */
+.solutions h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Style all list items */
+.solutions li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+/* Style the description container */
+.solutions .description {
+  flex: 1;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style the heading inside the description */
+.solutions h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Style the paragraph inside the description */
+.solutions p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* Style the button inside the description */
+.solutions .left-aligned-button {
+  padding: 10px 15px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Style the image container */
+.solutions .image-container {
+  flex: 1;
+  width: fit-content;
+}
+
+/* Style the image inside the image container */
+.solutions img {
+  width: 100%;
+  object-fit: cover;
+  align-self: center;
+  border-radius: 5px;
+  border: 2px solid var(--border-color);
+  padding: 10px;
+  margin: 0;
+}
+
+/* Style the card */
+.solutions .card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 10px;
+  max-width: 500px;
+  width: 100%;
+  text-align: left;
+  background-color: var(--dark-moss-green);
+  color: var(--background-color);
+}
+
+/* style the card  */
+
+.solutions .card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 10px;
+  max-width: 500px;
+  width: 100%;
+  padding-right: -20px;
+  align-self: flex-end;
+  padding: 20px;
+  margin-left: -30px;
+  margin-right: -60px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  z-index: 99999;
+  text-align: left;
+  background-color: var(--dark-moss-green);
+  color: var(--background-color);
+}
+
+/* lead capture style */
+
+/* Style for the lead capture section */
+.lead-capture {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  min-height: 80vh;
+}
+
+.lead-capture h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Style for the form */
+.lead-capture form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.lead-capture label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.lead-capture input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.lead-capture button {
+  background-color: var(--button-bg-color);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Hover effect for the button */
+.lead-capture button:hover {
+  background-color: #45a049;
+}
+
+/* Responsive styling */
+@media screen and (max-width: 600px) {
+  .lead-capture input,
+  .lead-capture button {
+    width: 100%;
+  }
+}
+
+/* acheivements */
+.our-achievements {
+  /* Add your styles for the .our-achievements container here */
+  padding: 0;
+  border-radius: 10px;
+}
+
+.our-achievements h3 {
+  /* Add your styles for the h3 element here */
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.our-achievements p {
+  /* Add your styles for the p element here */
+  color: #666;
+  font-size: 16px;
+}
+
+.our-achievements ul {
+  /* Add your styles for the ul element here */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+
+.our-achievements li {
+  /* Add your styles for the li element here */
+  margin: 0;
+}
+
+.achievements {
+  /* Add your styles for the .achievements container here */
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-height: 80vh;
+  height: fit-content;
+}
+
+.image-container {
+  /* Add your styles for the .image-container element here */
+  margin-right: 20px;
+  margin-left: 0;
+  flex: 1;
+}
+
+.image-container img {
+  /* Add your styles for the images inside .image-container here */
+  height: 100%;
+  width: auto;
+  max-width: 600px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+
+}
+
+.description {
+  /* Add your styles for the .description container here */
+  flex: 1;
+}
+
+.other-images {
+  /* Add your styles for the .other-images container here */
+  display: flex;
+  justify-content:flex-start;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.other-images img {
+  /* Add your styles for the images inside .other-images here */
+  max-width: 200px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.achievement-text {
+  /* Add your styles for the .achievement-text container here */
+  flex: 1;
+}
+
+.achievement-text h3 {
+  /* Add your styles for the h3 element inside .achievement-text here */
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+
+}
+
+.achievement-text p {
+  /* Add your styles for the p element inside .achievement-text here */
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 10px;
+
+}
+
+.background-column {
+  /* Add your styles for the .background-column container here */
+  background-color: var(--fern-green);
+  border-left: 1px solid #ccc;
+  padding: 800px 100px 20px 20px;
+  margin: 0;
+}

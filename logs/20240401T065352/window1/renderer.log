@@ -1,0 +1,57 @@
+2024-04-01 06:53:53.976 [info] Started local extension host with pid 69656.
+2024-04-01 06:54:03.333 [info] [perf] Render performance baseline is 93ms
+2024-04-01 06:58:04.277 [error] Request textDocument/semanticTokens/full failed with message: Cannot read properties of undefined (reading 'flags'): Error: Request textDocument/semanticTokens/full failed with message: Cannot read properties of undefined (reading 'flags')
+    at /root/.vscode/extensions/octref.vetur-0.37.3/dist/vueMain.js:1:62478
+    at /root/.vscode/extensions/octref.vetur-0.37.3/dist/vueMain.js:1:62772
+    at Immediate.<anonymous> (/root/.vscode/extensions/octref.vetur-0.37.3/dist/vueMain.js:1:63137)
+    at processImmediate (node:internal/timers:476:21)
+2024-04-01 07:15:08.498 [error] Request textDocument/semanticTokens/full failed with message: Cannot read properties of undefined (reading 'flags'): Error: Request textDocument/semanticTokens/full failed with message: Cannot read properties of undefined (reading 'flags')
+    at /root/.vscode/extensions/octref.vetur-0.37.3/dist/vueMain.js:1:62478
+    at /root/.vscode/extensions/octref.vetur-0.37.3/dist/vueMain.js:1:62772
+    at Immediate.<anonymous> (/root/.vscode/extensions/octref.vetur-0.37.3/dist/vueMain.js:1:63137)
+    at processImmediate (node:internal/timers:476:21)
+2024-04-01 07:18:22.472 [error] Request textDocument/semanticTokens/full failed with message: Cannot read properties of undefined (reading 'flags'): Error: Request textDocument/semanticTokens/full failed with message: Cannot read properties of undefined (reading 'flags')
+    at /root/.vscode/extensions/octref.vetur-0.37.3/dist/vueMain.js:1:62478
+    at /root/.vscode/extensions/octref.vetur-0.37.3/dist/vueMain.js:1:62772
+    at Immediate.<anonymous> (/root/.vscode/extensions/octref.vetur-0.37.3/dist/vueMain.js:1:63137)
+    at processImmediate (node:internal/timers:476:21)
+2024-04-01 13:56:13.496 [error] Unknown (FileSystemError): Failed to move 'media' to the trash
+    at l.create (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3490)
+    at b (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3608)
+    at w.y (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:59:39587)
+2024-04-01 13:56:13.520 [error] Failed to move 'media' to the trash: Unknown (FileSystemError): Failed to move 'media' to the trash
+    at l.create (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3490)
+    at b (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3608)
+    at w.y (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:59:39587)
+2024-04-01 13:58:05.721 [error] Unknown (FileSystemError): Failed to move 'achievement_images' to the trash
+    at l.create (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3490)
+    at b (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3608)
+    at w.y (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:59:39587)
+2024-04-01 13:58:05.743 [error] Failed to move 'achievement_images' to the trash: Unknown (FileSystemError): Failed to move 'achievement_images' to the trash
+    at l.create (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3490)
+    at b (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3608)
+    at w.y (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:59:39587)
+2024-04-01 13:59:02.723 [error] Unknown (FileSystemError): Failed to move 'media' to the trash
+    at l.create (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3490)
+    at b (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3608)
+    at w.y (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:59:39587)
+2024-04-01 13:59:02.748 [error] Failed to move 'media' to the trash: Unknown (FileSystemError): Failed to move 'media' to the trash
+    at l.create (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3490)
+    at b (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3608)
+    at w.y (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:59:39587)
+2024-04-01 14:04:14.980 [error] Unknown (FileSystemError): Failed to move 'media' to the trash
+    at l.create (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3490)
+    at b (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3608)
+    at w.y (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:59:39587)
+2024-04-01 14:04:15.001 [error] Failed to move 'media' to the trash: Unknown (FileSystemError): Failed to move 'media' to the trash
+    at l.create (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3490)
+    at b (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3608)
+    at w.y (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:59:39587)
+2024-04-01 19:03:32.522 [error] Unknown (FileSystemError): Failed to move 'testimonial_images' to the trash
+    at l.create (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3490)
+    at b (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3608)
+    at w.y (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:59:39587)
+2024-04-01 19:03:32.562 [error] Failed to move 'testimonial_images' to the trash: Unknown (FileSystemError): Failed to move 'testimonial_images' to the trash
+    at l.create (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3490)
+    at b (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:54:3608)
+    at w.y (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:59:39587)

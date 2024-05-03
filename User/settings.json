@@ -1,0 +1,7 @@
+{
+    "[vue]": {
+        "editor.defaultFormatter": "Vue.volar"
+    },
+    "explorer.confirmDelete": false,
+    "files.autoSave": "afterDelay"
+}

@@ -1,0 +1,8 @@
+2024-03-31 22:47:10.703 [info] update#setState idle
+2024-03-31 22:47:32.932 [info] Extension host with pid 13394 exited with code: 0, signal: unknown.
+2024-03-31 22:47:40.661 [info] update#setState checking for updates
+2024-03-31 22:47:40.669 [info] update#setState available for download
+2024-03-31 22:51:33.148 [error] Blocked vscode-webview request vscode-webview://1ni82pmd2v7gm0vlkpm91bu4piaeq8v40qi9stg4cq9fmlp27kv0/index.html?id=4e31cacf-fb21-4e43-8c0a-a33f1a8ad4af&origin=4e31cacf-fb21-4e43-8c0a-a33f1a8ad4af&swVersion=4&extensionId=&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app&disableServiceWorker=true
+2024-03-31 22:51:33.236 [error] CodeWindow: failed to load (reason: ERR_BLOCKED_BY_CLIENT, code: -20)
+2024-03-31 23:16:20.331 [error] Blocked vscode-webview request vscode-webview://1ni82pmd2v7gm0vlkpm91bu4piaeq8v40qi9stg4cq9fmlp27kv0/index.html?id=4e31cacf-fb21-4e43-8c0a-a33f1a8ad4af&origin=4e31cacf-fb21-4e43-8c0a-a33f1a8ad4af&swVersion=4&extensionId=&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app&disableServiceWorker=true
+2024-04-01 06:53:37.809 [info] Extension host with pid 13526 exited with code: 0, signal: unknown.

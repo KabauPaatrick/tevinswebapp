@@ -1,0 +1,44 @@
+Error: Debug Failure. False expression: Script kind should match provided ScriptKind:3 and sourceFile.scriptKind: 1, !entry: false
+    at getDocumentRegistryEntry (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:134212:13)
+    at acquireOrUpdateDocument (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:134242:34)
+    at Object.acquireDocumentWithKey (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:134178:14)
+    at Object.getOrCreateSourceFileByPath [as getSourceFileByPath] (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:142915:33)
+    at tryReuseStructureFromOldProgram (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:119890:61)
+    at createProgram (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:119303:25)
+    at synchronizeHostData (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:142849:17)
+    at Object.getProgram (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:142923:7)
+    at /root/.vscode/extensions/vue.volar-2.0.8/dist/server.js:989:23793
+    at x (/root/.vscode/extensions/vue.volar-2.0.8/dist/server.js:989:24781)
+Error: Debug Failure. False expression: Script kind should match provided ScriptKind:3 and sourceFile.scriptKind: 1, !entry: false
+    at getDocumentRegistryEntry (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:134212:13)
+    at acquireOrUpdateDocument (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:134242:34)
+    at Object.acquireDocumentWithKey (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:134178:14)
+    at Object.getOrCreateSourceFileByPath [as getSourceFileByPath] (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:142915:33)
+    at tryReuseStructureFromOldProgram (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:119890:61)
+    at createProgram (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:119303:25)
+    at synchronizeHostData (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:142849:17)
+    at Object.getProgram (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:142923:7)
+    at /root/.vscode/extensions/vue.volar-2.0.8/dist/server.js:989:23793
+    at x (/root/.vscode/extensions/vue.volar-2.0.8/dist/server.js:989:24781)
+Error: Debug Failure. False expression: Script kind should match provided ScriptKind:3 and sourceFile.scriptKind: 1, !entry: false
+    at getDocumentRegistryEntry (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:134212:13)
+    at acquireOrUpdateDocument (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:134242:34)
+    at Object.acquireDocumentWithKey (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:134178:14)
+    at getOrCreateSourceFileByPath (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:142915:33)
+    at Object.getOrCreateSourceFile (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:142894:16)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:142818:44
+    at Object.getSourceFileWithCache [as getSourceFile] (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:118639:26)
+    at findSourceFileWorker (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:120941:25)
+    at findSourceFile (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:120861:22)
+    at processImportedModules (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:121284:13)
+Error: Debug Failure. False expression: Script kind should match provided ScriptKind:3 and sourceFile.scriptKind: 1, !entry: false
+    at getDocumentRegistryEntry (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:134212:13)
+    at acquireOrUpdateDocument (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:134242:34)
+    at Object.acquireDocumentWithKey (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:134178:14)
+    at getOrCreateSourceFileByPath (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:142915:33)
+    at Object.getOrCreateSourceFile (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:142894:16)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:142818:44
+    at Object.getSourceFileWithCache [as getSourceFile] (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:118639:26)
+    at findSourceFileWorker (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:120941:25)
+    at findSourceFile (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:120861:22)
+    at processImportedModules (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:121284:13)

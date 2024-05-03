@@ -1,0 +1,61 @@
+2024-03-31 22:47:12.387 [info] Started local extension host with pid 13394.
+2024-03-31 22:47:15.807 [info] [perf] Render performance baseline is 43ms
+2024-03-31 22:47:33.666 [info] Started local extension host with pid 13526.
+2024-03-31 22:47:36.452 [info] [perf] Render performance baseline is 52ms
+2024-03-31 22:47:39.599 [error] Cannot read properties of undefined (reading 'accessToken'): TypeError: Cannot read properties of undefined (reading 'accessToken')
+    at g.f (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:1678:21613)
+    at l.value (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:1678:21434)
+2024-03-31 23:22:49.922 [error] Illegal argument: range: Error: Illegal argument: range
+    at b (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:10:1101)
+    at new ii (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:148:24953)
+    at we (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:38:582)
+    at o (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:37:22226)
+    at Object.mD [as map] (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:37:22312)
+    at Object.ve [as asColorInformations] (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:38:666)
+    at /root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:41:76170
+    at de.provideColors (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:150:116659)
+2024-03-31 23:22:53.235 [error] Illegal argument: range: Error: Illegal argument: range
+    at b (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:10:1101)
+    at new ii (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:148:24953)
+    at we (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:38:582)
+    at o (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:37:22226)
+    at Object.mD [as map] (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:37:22312)
+    at Object.ve [as asColorInformations] (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:38:666)
+    at /root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:41:76170
+    at de.provideColors (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:150:116659)
+2024-03-31 23:23:10.633 [error] Illegal argument: range: Error: Illegal argument: range
+    at b (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:10:1101)
+    at new ii (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:148:24953)
+    at we (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:38:582)
+    at o (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:37:22226)
+    at Object.mD [as map] (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:37:22312)
+    at Object.ve [as asColorInformations] (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:38:666)
+    at /root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:41:76170
+    at de.provideColors (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:150:116659)
+2024-03-31 23:23:18.024 [error] Illegal argument: range: Error: Illegal argument: range
+    at b (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:10:1101)
+    at new ii (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:148:24953)
+    at we (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:38:582)
+    at o (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:37:22226)
+    at Object.mD [as map] (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:37:22312)
+    at Object.ve [as asColorInformations] (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:38:666)
+    at /root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:41:76170
+    at de.provideColors (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:150:116659)
+2024-03-31 23:23:19.795 [error] Illegal argument: range: Error: Illegal argument: range
+    at b (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:10:1101)
+    at new ii (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:148:24953)
+    at we (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:38:582)
+    at o (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:37:22226)
+    at Object.mD [as map] (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:37:22312)
+    at Object.ve [as asColorInformations] (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:38:666)
+    at /root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:41:76170
+    at de.provideColors (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:150:116659)
+2024-03-31 23:23:21.580 [error] Illegal argument: range: Error: Illegal argument: range
+    at b (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:10:1101)
+    at new ii (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:148:24953)
+    at we (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:38:582)
+    at o (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:37:22226)
+    at Object.mD [as map] (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:37:22312)
+    at Object.ve [as asColorInformations] (/root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:38:666)
+    at /root/.vscode/extensions/vue.volar-2.0.8/dist/client.js:41:76170
+    at de.provideColors (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:150:116659)
