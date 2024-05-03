@@ -1,0 +1,21 @@
+2024-05-03 04:00:54.198 [info] Extension host with pid 21804 started
+2024-05-03 04:00:54.198 [info] Skipping acquiring lock for /home/pato-devops/VueProjects/tevinswebapp/User/workspaceStorage/632070e780ff69e81c41f250213941fd.
+2024-05-03 04:00:54.589 [info] ExtensionService#_doActivateExtension Vue.volar, startup: false, activationEvent: 'onLanguage:plaintext'
+2024-05-03 04:00:54.659 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2024-05-03 04:00:54.673 [info] ExtensionService#_doActivateExtension octref.vetur, startup: false, activationEvent: 'onLanguage:vue'
+2024-05-03 04:00:54.694 [info] ExtensionService#_doActivateExtension syler.sass-indented, startup: false, activationEvent: 'onLanguage:vue'
+2024-05-03 04:00:55.202 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'api', root cause: Vue.volar
+2024-05-03 04:00:55.823 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2024-05-03 04:00:55.827 [info] ExtensionService#_doActivateExtension christian-kohler.path-intellisense, startup: true, activationEvent: '*'
+2024-05-03 04:00:55.855 [info] ExtensionService#_doActivateExtension formulahendry.auto-close-tag, startup: true, activationEvent: '*'
+2024-05-03 04:00:55.858 [info] ExtensionService#_doActivateExtension formulahendry.auto-rename-tag, startup: true, activationEvent: '*'
+2024-05-03 04:00:57.532 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2024-05-03 04:00:57.622 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2024-05-03 04:00:58.156 [info] Eager extensions activated
+2024-05-03 04:00:58.749 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2024-05-03 04:00:58.755 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2024-05-03 04:00:58.780 [info] ExtensionService#_doActivateExtension dbaeumer.vscode-eslint, startup: false, activationEvent: 'onStartupFinished'
+2024-05-03 04:00:58.812 [info] ExtensionService#_doActivateExtension esbenp.prettier-vscode, startup: false, activationEvent: 'onStartupFinished'
+2024-05-03 04:00:59.956 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2024-05-03 04:01:32.873 [info] ExtensionService#_doActivateExtension ms-vscode-remote.remote-containers, startup: false, activationEvent: 'onStartupFinished'
+2024-05-03 04:17:00.901 [info] ExtensionService#_doActivateExtension ms-edgedevtools.vscode-edge-devtools, startup: false, activationEvent: 'onStartupFinished'

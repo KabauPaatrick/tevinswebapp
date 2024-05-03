@@ -1,0 +1,11 @@
+TypeError: Cannot read properties of undefined (reading 'updateFromProject')
+    at synchronizeHostData (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:144203:16)
+    at Object.getProgram (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/typescript.js:144384:7)
+    at /root/.vscode/extensions/vue.volar-2.0.8/dist/server.js:989:23793
+    at x (/root/.vscode/extensions/vue.volar-2.0.8/dist/server.js:989:24781)
+    at async d (/root/.vscode/extensions/vue.volar-2.0.8/dist/server.js:989:23729)
+    at async /root/.vscode/extensions/vue.volar-2.0.8/dist/server.js:3:55237
+    at async hk (/root/.vscode/extensions/vue.volar-2.0.8/dist/server.js:3:18551)
+    at async qj (/root/.vscode/extensions/vue.volar-2.0.8/dist/server.js:3:18009)
+    at async f (/root/.vscode/extensions/vue.volar-2.0.8/dist/server.js:3:54856)
+    at async Object.doValidation (/root/.vscode/extensions/vue.volar-2.0.8/dist/server.js:3:54576)

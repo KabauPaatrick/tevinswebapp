@@ -56,7 +56,8 @@
                             "items": [
                                 {
                                     "id": "workbench.action.reopenClosedEditor",
-                                    "label": "&&Reopen Closed Editor"
+                                    "label": "&&Reopen Closed Editor",
+                                    "enabled": false
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -502,13 +503,17 @@
                                     "submenu": {
                                         "items": [
                                             {
-                                                "id": "workbench.action.activityBarLocation.side",
-                                                "label": "&&Side",
+                                                "id": "workbench.action.activityBarLocation.default",
+                                                "label": "&&Default",
                                                 "checked": true
                                             },
                                             {
                                                 "id": "workbench.action.activityBarLocation.top",
                                                 "label": "&&Top"
+                                            },
+                                            {
+                                                "id": "workbench.action.activityBarLocation.bottom",
+                                                "label": "&&Bottom"
                                             },
                                             {
                                                 "id": "workbench.action.activityBarLocation.hide",
@@ -615,7 +620,7 @@
                                 },
                                 {
                                     "id": "breadcrumbs.toggle",
-                                    "label": "&&Breadcrumbs",
+                                    "label": "Toggle &&Breadcrumbs",
                                     "checked": true
                                 },
                                 {
@@ -671,13 +676,6 @@
                                 {
                                     "id": "workbench.action.splitEditorRight",
                                     "label": "Split &&Right"
-                                },
-                                {
-                                    "id": "vscode.menubar.separator"
-                                },
-                                {
-                                    "id": "workbench.action.splitEditorInGroup",
-                                    "label": "Split in &&Group"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -782,7 +780,8 @@
                     },
                     {
                         "id": "editor.action.toggleWordWrap",
-                        "label": "&&Word Wrap"
+                        "label": "&&Word Wrap",
+                        "enabled": false
                     }
                 ]
             },
@@ -799,7 +798,8 @@
                     },
                     {
                         "id": "workbench.action.navigateToLastEditLocation",
-                        "label": "&&Last Edit Location"
+                        "label": "&&Last Edit Location",
+                        "enabled": false
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -1458,11 +1458,6 @@
                 "isNative": false,
                 "userSettingsLabel": "ctrl+k ctrl+\\"
             },
-            "workbench.action.splitEditorInGroup": {
-                "label": "Ctrl+K Ctrl+Shift+\\",
-                "isNative": false,
-                "userSettingsLabel": "ctrl+k ctrl+shift+\\"
-            },
             "workbench.action.copyEditorToNewWindow": {
                 "label": "Ctrl+K O",
                 "isNative": false,
@@ -1707,7 +1702,7 @@
             "editorPartMinWidth": 220,
             "titleBarHeight": 0,
             "activityBarWidth": 48,
-            "sideBarWidth": 541,
+            "sideBarWidth": 256,
             "statusBarHeight": 22,
             "windowBorder": false
         }
@@ -1715,11 +1710,11 @@
     "windowsState": {
         "lastActiveWindow": {
             "folder": "file:///home/pato-devops/DISIWebProject",
-            "backupPath": "/home/pato-devops/DISIWebProject/Backups/0a765643f5adf89f9f7a2ef92f10e2ee",
+            "backupPath": "/home/pato-devops/VueProjects/tevinswebapp/Backups/0a765643f5adf89f9f7a2ef92f10e2ee",
             "uiState": {
-                "mode": 0,
+                "mode": 1,
                 "x": 0,
-                "y": 69,
+                "y": 107,
                 "width": 1920,
                 "height": 973
             }
