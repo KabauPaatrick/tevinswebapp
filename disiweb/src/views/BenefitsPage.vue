@@ -1,8 +1,7 @@
 <template>
   <div v-if="solutions.length > 0" class="outtertext">
-    <h3>Our Services</h3>
+    <h3 id="title">Our Services</h3>
     <div class="our-services">
-      <button v-if="!isSmallScreen && solutions.length > 3" @click="prev" class="nav-btn left-btn">&lt;</button>
       <ul class="service-list">
         <li v-for="solution in visibleSolutions" :key="solution.id" class="service-item">
           <div class="service-card">
@@ -10,31 +9,34 @@
             <div class="service-card-body">
               <h5 class="service-card-title">{{ solution.name }}</h5>
               <p class="service-card-text">{{ solution.description }}</p>
-              <a :href="solution.link || '#'" class="btn btn-primary">{{ getCTAText(solution.ctatext) }}</a>
+              <router-link :to="solution.link || '/cart'" custom v-slot="{ navigate, href }">
+                <a @click="navigate" :href="href" class="btn btn-primary">
+                  {{ getCTAText(solution.ctatext) }}
+                </a>
+              </router-link>
             </div>
           </div>
         </li>
       </ul>
-      <button v-if="!isSmallScreen && solutions.length > 3" @click="next" class="nav-btn right-btn">&gt;</button>
     </div>
   </div>
 </template>
 
+
 <script>
-import { reactive, ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import axios from 'axios';
 
 export default {
   setup() {
-    const solutions = reactive([]);
-    const currentIndex = ref(0);
+    const solutions = ref([]);
     const isSmallScreen = ref(window.innerWidth <= 768);
 
     const fetchData = async () => {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/solutions/show/');
         if (response.data && response.data.length > 0) {
-          solutions.push(...response.data);
+          solutions.value = response.data;
           console.log(response.data);
         } else {
           console.error('Error: No data received from API');
@@ -59,62 +61,34 @@ export default {
     };
 
     const visibleSolutions = computed(() => {
-      if (isSmallScreen.value) {
-        return solutions;
-      }
-      return solutions.slice(currentIndex.value, currentIndex.value + 3);
+      return solutions.value;
     });
-
-    const next = () => {
-      if (currentIndex.value + 3 < solutions.length) {
-        currentIndex.value += 3;
-      }
-    };
-
-    const prev = () => {
-      if (currentIndex.value > 0) {
-        currentIndex.value -= 3;
-      }
-    };
 
     return {
       solutions,
       getCTAText,
       visibleSolutions,
-      next,
-      prev,
       isSmallScreen,
     };
   },
 };
 </script>
 
+
 <style scoped>
 /* Styles for the solutions section */
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
-/* Color Variables */
-:root {
-  --color-one: #1F2124;
-  --color-two: #383A3F;
-  --color-three: #F68657;
-  --color-four: #F6B352;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-body {
-  background: var(--color-two);
-  font-family: 'Varela Round', sans-serif;
-}
-
-.outtertext {
+.outtertext{
   text-align: center;
-  color: white;
+  color: black;
   margin-top: 30px;
+}
+
+#title{
+  font-size: 40px;
+  margin-bottom: -20px;
 }
 
 .our-services {
@@ -122,27 +96,17 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  max-width: 100%; /* Set maximum width to make it responsive */
+  max-width: 80vw; /* Set maximum width to make it responsive */
   padding: 30px;
   border-radius: 10px;
   margin-bottom: 10px;
-  background: rgba(106, 188, 226, 0.25);
-  box-shadow: rgb(31 38 135, 0.37);
-  backdrop-filter: blur(0px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  overflow-x: auto; /* Add horizontal scroll for small screens */
-}
-
-.our-services h3 {
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  margin-left: 150px;
+  flex-wrap: wrap;
 }
 
 .service-list {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   padding-top: 30px;
   margin-right: 20px;
@@ -157,14 +121,13 @@ body {
 
 /* Service Card Styles */
 .service-card {
-  background: #0a2472;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-  border-radius: 5px;
-  margin: 20px;
+  background: #cacbd5;
+  border-radius: 10px;
+  margin: 5px;
   width: 300px;
   padding: 20px;
   text-align: center;
-  color: white;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -185,8 +148,8 @@ body {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
+  align-items: flex-start;
 }
 
 .service-card-title {
@@ -200,54 +163,21 @@ body {
 
 /* Button Styles */
 .btn-primary {
-  display: block;
-  background: orangered;
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 210px;
+  height: 50px;
+  border-radius: 10px;
   border: none;
+  background: #f2630d;
   color: white;
-  padding: 15px 20px;
-  margin: 20px 0;
-  border-radius: 0px;
-  box-shadow: rgba(0, 0, 0, 0.9);
-  transition: all 200ms ease-in-out;
   text-decoration: none;
 }
 
 .btn-primary:hover {
-  background: transparent;
-  border: solid 1px orangered;
-}
-
-/* Navigation Button Styles */
-.nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: #3a6ea5;
   color: white;
-  border: none;
-  padding: 10px 20px;
-  width: 30px;
-  height: 70px;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.left-btn {
-  left: 10px;
-}
-
-.right-btn {
-  right: 10px;
-}
-
-/* Specific styles for the middle card */
-.service-item:nth-child(2) .service-card {
-  transform: scale(1.1) translateY(-10px);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
-}
-
-.service-item:nth-child(2) .service-card:hover {
-  transform: scale(1.15);
 }
 
 /* Responsive adjustments */

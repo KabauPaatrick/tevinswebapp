@@ -54,7 +54,7 @@ export default {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  color: white;
+  color: black;
 }
 
 .testimonial-cards {
@@ -62,10 +62,7 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  background: rgba(20, 83, 71, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(106, 188, 226, 0.25);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   height: 550px;
@@ -83,14 +80,14 @@ export default {
   top: 10px;
   bottom: 0;
   width: 1px;
-  background-color: #ddd;
+  background-color: #000;
   transform: translateX(-50%);
   z-index: 1;
   height: 100vh;
 }
 
 .t-cards {
-  background: #0a2472;
+  background: #cacbd5;
   border-radius: 5px;
   padding: 5px;
   margin: 10px;
@@ -100,13 +97,13 @@ export default {
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
-  color: white;
+  color: black;
   z-index: 2;
 }
 
 .t-cards p {
   margin: 1px;
-  color: white;
+  color: black;
 }
 
 .position {

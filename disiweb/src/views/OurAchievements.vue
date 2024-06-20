@@ -57,17 +57,16 @@ export default {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  color: white;
+  color: black;
 }
 
 .our-achievement {
   padding: 20px;
-  background: rgba(0, 0, 0, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  /* background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18); */
   margin: 30px;
   text-align: center;
   color: black;
@@ -91,19 +90,21 @@ export default {
 }
 
 .a-card {
-  border: 1px solid #ddd;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 300px;
   padding: 10px;
-  background: white;
+  background: #cacbd5;
   display: flex;
-  border-radius: 5px;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
 }
 
 .a-card-img-top {
-  width: 120px;
-  height: 120px;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
 }
 
 .a-card-body {

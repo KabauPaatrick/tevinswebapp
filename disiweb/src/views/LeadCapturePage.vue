@@ -32,13 +32,11 @@ export default {
     margin-top: 40px;
     margin-bottom: 40px;
     min-height: 80vh;
-    color: white;
+    color: black;
     width: 700px;
-    background: rgba( 106, 188, 226, 0.25 );
+    background: #cacbd5;
     box-shadow: rgb(31 38 135, 0.37 );
-    backdrop-filter: blur(0px);
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 .lead-capture h2 {
@@ -72,7 +70,7 @@ export default {
   color: #fff;
   padding: 10px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
   width: 200px;
@@ -81,7 +79,7 @@ export default {
 
 /* Hover effect for the button */
 .lead-capture button:hover {
-  background-color: orangered;
+  background-color: #007bff;
   transform: scale(1.05);
 }
 

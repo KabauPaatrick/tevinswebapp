@@ -104,6 +104,9 @@ DATABASES = {
         'PASSWORD': 'Gwatadai@254',
         'HOST': 'localhost',
         'PORT': '3306',
+        'OPTIONS': {
+            'unix_socket': '/var/run/mysqld/mysqld.sock',  # Specify the correct socket file path
+        },
     }
 }
 
