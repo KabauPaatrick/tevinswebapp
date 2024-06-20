@@ -9,7 +9,7 @@
             <div class="service-card-body">
               <h5 class="service-card-title">{{ solution.name }}</h5>
               <p class="service-card-text">{{ solution.description }}</p>
-              <router-link :to="solution.link || '/cart'" custom v-slot="{ navigate, href }">
+              <router-link :to="solution.link || '/'" custom v-slot="{ navigate, href }">
                 <a @click="navigate" :href="href" class="btn btn-primary">
                   {{ getCTAText(solution.ctatext) }}
                 </a>

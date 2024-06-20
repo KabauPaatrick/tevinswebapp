@@ -63,7 +63,7 @@ export default {
 /* Styles for the title section */
 .title {
     text-align: center;
-    color: white;
+    color: black;
     padding: 20px;
 }
 
@@ -96,7 +96,8 @@ export default {
     height: 420px;
     width: 250px;
     padding: 10px;
-    background: #0a2472;
+    background: #cacbd5;
+    color: black;
 }
 
 .liscence-card-img-top {
@@ -119,21 +120,21 @@ export default {
 }
 
 .btn {
-    display: block;
-    background: orangered;
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
     border: none;
+    background: #f2630d;
     color: white;
-    padding: 15px 20px;
-    margin: 20px 0;
-    border-radius: 0px;
-    box-shadow: rgba(0, 0, 0, 0.9);
-    transition: all 200ms ease-in-out;
     text-decoration: none;
 }
 
 .btn:hover {
-    background: transparent;
-    border: solid 1px orangered;
+    background: #3a6ea5;
+    color: white;
 }
 
 /* Responsive adjustments */

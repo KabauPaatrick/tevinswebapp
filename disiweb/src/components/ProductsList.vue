@@ -1,47 +1,47 @@
 <template>
     <body>
-        <!-- <div class="image">
+        <div class="image">
             <img src="@/assets/images/Order Confirmed 1.png" alt="Cart Item Image" id="headimage">
-        </div> -->
+        </div>
         <div class="products">
             <div class="product1">
-                <img src="@/assets/images/TUK.jpg" alt="" id="product-image">
+                <img src="@/assets/images/towelproduct.jpg" alt="" id="product-image">
                 <h1>Item 1</h1>
                 <h5>$100</h5>
                 <button id="go" @click="gotoproduct">View Item</button>
             </div>
             <div class="product1">
-                <img src="@/assets/images/TUK.jpg" alt="" id="product-image">
+                <img src="@/assets/images/towelproduct.jpg" alt="" id="product-image">
                 <h1>Item 1</h1>
                 <h5>$100</h5>
                 <button id="go" @click="gotoproduct">View Item</button>
             </div><div class="product1">
-                <img src="@/assets/images/TUK.jpg" alt="" id="product-image">
+                <img src="@/assets/images/towelproduct.jpg" alt="" id="product-image">
                 <h1>Item 1</h1>
                 <h5>$100</h5>
                 <button id="go" @click="gotoproduct">View Item</button>
             </div><div class="product1">
-                <img src="@/assets/images/TUK.jpg" alt="" id="product-image">
+                <img src="@/assets/images/towelproduct.jpg" alt="" id="product-image">
                 <h1>Item 1</h1>
                 <h5>$100</h5>
                 <button id="go" @click="gotoproduct">View Item</button>
             </div><div class="product1">
-                <img src="@/assets/images/TUK.jpg" alt="" id="product-image">
+                <img src="@/assets/images/towelproduct.jpg" alt="" id="product-image">
                 <h1>Item 1</h1>
                 <h5>$100</h5>
                 <button id="go" @click="gotoproduct">View Item</button>
             </div><div class="product1">
-                <img src="@/assets/images/TUK.jpg" alt="" id="product-image">
+                <img src="@/assets/images/towelproduct.jpg" alt="" id="product-image">
                 <h1>Item 1</h1>
                 <h5>$100</h5>
                 <button id="go" @click="gotoproduct">View Item</button>
             </div><div class="product1">
-                <img src="@/assets/images/TUK.jpg" alt="" id="product-image">
+                <img src="@/assets/images/towelproduct.jpg" alt="" id="product-image">
                 <h1>Item 1</h1>
                 <h5>$100</h5>
                 <button id="go" @click="gotoproduct">View Item</button>
             </div><div class="product1">
-                <img src="@/assets/images/TUK.jpg" alt="" id="product-image">
+                <img src="@/assets/images/towelproduct.jpg" alt="" id="product-image">
                 <h1>Item 1</h1>
                 <h5>$100</h5>
                 <button id="go" @click="gotoproduct">View Item</button>

@@ -101,12 +101,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'disiweb',
         'USER': 'root',
-        'PASSWORD': 'Gwatadai@254',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
-        'OPTIONS': {
-            'unix_socket': '/var/run/mysqld/mysqld.sock',  # Specify the correct socket file path
-        },
+        # 'OPTIONS': {
+        #     'unix_socket': '/var/run/mysqld/mysqld.sock',  
+        # },
     }
 }
 

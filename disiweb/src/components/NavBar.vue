@@ -8,6 +8,7 @@
           <router-link to="/">Resources</router-link>
           <router-link to="/">Support</router-link>
           <router-link to="/">Country</router-link>
+          <router-link to="/products">Shop</router-link>
         </ul>
       </div>
     </div>
