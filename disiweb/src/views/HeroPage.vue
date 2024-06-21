@@ -68,15 +68,13 @@ export default {
 
 </script>
   
-  <style scoped>
-
+<style scoped>
 .hero {
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 40px;
-  height: auto; 
   color: black;
   border-radius: 15px;
   margin-bottom: 30px;
@@ -86,19 +84,14 @@ export default {
   font-size: 2rem;
   font-weight: bolder;
   line-height: 1.2;
-  font-style: normal;
   margin-bottom: 15px;
   text-align: left;
-  margin-left: var(--spacing-xl);
-  margin-right: var(--spacing-xl);
 }
 
 .hero p {
   font-size: 1.5em;
   line-height: 1.5;
   text-align: left;
-  margin-left: var(--spacing-xl);
-  margin-right: var(--spacing-xl);
 }
 
 .hero button {
@@ -110,7 +103,6 @@ export default {
   border-radius: 10px;
   cursor: pointer;
   margin-top: 20px;
-  text-align: left;
 }
 
 .hero button:hover {
@@ -119,261 +111,47 @@ export default {
 }
 
 .hero .image-container {
-  width: 50%; 
-  max-width: 50%; 
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero img {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   height: auto;
   border-radius: 0px;
-  margin-left: 200px;
 }
 
 .hero .description {
-  width: 50%; 
-  max-width: 50%; 
+  flex: 1;
+  padding-left: 20px;
 }
-
-
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .hero {
-    margin: 20px;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
   }
 
-  .hero h3 {
-    font-size: 1.2rem; /* Decrease font size for smaller screens */
-  }
-  
-  .hero p {
-    font-size: 1.2em; /* Decrease font size for smaller screens */
+  .hero h3,  .hero button {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
   }
 
-  .hero button {
-    font-size: 0.8em; /* Decrease font size for smaller screens */
+  .hero p{
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+  }
+
+  .hero .description {
+    padding-left: 0;
+    padding-top: 20px;
   }
 }
-
-@media (max-width: 1000px) {
-  .hero {
-    margin: 20px;
-  }
-
-  .hero button {
-    font-size: 0.8em; /* Decrease font size for smaller screens */
-  }
-}
-
-/* Specific screen sizes */
-/* IPhone SE */
-@media (max-width: 375px) and (max-height: 667px) {
-  .hero h3 {
-    font-size: 1rem;
-  }
-  .hero p {
-    font-size: 1em;
-  }
-  .hero button {
-    font-size: 0.8em;
-  }
-}
-
-/* IPhone XR */
-@media (max-width: 414px) and (max-height: 896px) {
-  .hero h3 {
-    font-size: 1.2rem;
-  }
-  .hero p {
-    font-size: 1.2em;
-  }
-  .hero button {
-    font-size: 0.9em;
-  }
-}
-
-/* IPhone 12 Pro */
-@media (max-width: 390px) and (max-height: 884px) {
-  .hero h3 {
-    font-size: 1.2rem;
-  }
-  .hero p {
-    font-size: 1.2em;
-  }
-  .hero button {
-    font-size: 0.9em;
-  }
-}
-
-/* IPhone 14 Pro Max */
-@media (max-width: 430px) and (max-height: 932px) {
-  .hero h3 {
-    font-size: 1.2rem;
-  }
-  .hero p {
-    font-size: 1.2em;
-  }
-  .hero button {
-    font-size: 0.9em;
-  }
-}
-
-/* Pixel 7 and Samsung Galaxy S20 Ultra */
-@media (max-width: 412px) and (max-height: 915px) {
-  .hero h3 {
-    font-size: 1.2rem;
-  }
-  .hero p {
-    font-size: 1.2em;
-  }
-  .hero button {
-    font-size: 0.9em;
-  }
-}
-
-/* Samsung Galaxy S8+ */
-@media (max-width: 360px) and (max-height: 740px) {
-  .hero h3 {
-    font-size: 1.1rem;
-  }
-  .hero p {
-    font-size: 1.1em;
-  }
-  .hero button {
-    font-size: 0.8em;
-  }
-}
-
-/* IPad Mini */
-@media (max-width: 768px) and (max-height: 1024px) {
-  .hero h3 {
-    font-size: 1.5rem;
-  }
-  .hero p {
-    font-size: 1.4em;
-  }
-  .hero button {
-    font-size: 1em;
-  }
-}
-
-/* IPad Air */
-@media (max-width: 820px) and (max-height: 1180px) {
-  .hero h3 {
-    font-size: 1.7rem;
-  }
-  .hero p {
-    font-size: 1.6em;
-  }
-  .hero button {
-    font-size: 1em;
-  }
-}
-
-/* IPad Pro */
-@media (max-width: 1024px) and (max-height: 1366px) {
-  .hero h3 {
-    font-size: 2rem;
-  }
-  .hero p {
-    font-size: 1.8em;
-  }
-  .hero button {
-    font-size: 1.1em;
-  }
-}
-
-/* Surface Pro 7 */
-@media (max-width: 1368px) and (max-height: 312px) {
-  .hero h3 {
-    font-size: 1.5rem;
-  }
-  .hero p {
-    font-size: 1.4em;
-  }
-  .hero button {
-    font-size: 1em;
-  }
-}
-
-/* Surface Duo */
-@media (max-width: 540px) and (max-height: 720px) {
-  .hero h3 {
-    font-size: 1.3rem;
-  }
-  .hero p {
-    font-size: 1.2em;
-  }
-  .hero button {
-    font-size: 0.9em;
-  }
-}
-
-/* Galaxy Z Fold 5 */
-@media (max-width: 344px) and (max-height: 882px) {
-  .hero h3 {
-    font-size: 1.1rem;
-  }
-  .hero p {
-    font-size: 1.1em;
-  }
-  .hero button {
-    font-size: 0.8em;
-  }
-}
-
-/* Asus Zenbook Fold */
-@media (max-width: 853px) and (max-height: 1280px) {
-  .hero h3 {
-    font-size: 1.8rem;
-  }
-  .hero p {
-    font-size: 1.7em;
-  }
-  .hero button {
-    font-size: 1em;
-  }
-}
-
-/* Samsung Galaxy A51/71 */
-@media (max-width: 412px) and (max-height: 914px) {
-  .hero h3 {
-    font-size: 1.2rem;
-  }
-  .hero p {
-    font-size: 1.2em;
-  }
-  .hero button {
-    font-size: 0.9em;
-  }
-}
-
-/* Nest Hub */
-@media (max-width: 1024px) and (max-height: 600px) {
-  .hero h3 {
-    font-size: 1.7rem;
-  }
-  .hero p {
-    font-size: 1.6em;
-  }
-  .hero button {
-    font-size: 1em;
-  }
-}
-
-/* Nest Hub Max */
-@media (max-width: 1280px) and (max-height: 800px) {
-  .hero h3 {
-    font-size: 2rem;
-  }
-  .hero p {
-    font-size: 1.8em;
-  }
-  .hero button {
-    font-size: 1.1em;
-  }
-}
-
 </style>
-
