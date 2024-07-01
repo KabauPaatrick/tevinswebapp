@@ -9,6 +9,13 @@
           <router-link to="/">Support</router-link>
           <router-link to="/">Country</router-link>
           <router-link to="/products">Shop</router-link>
+          <div class="profile-icon" v-if="!showMenuIcon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" stroke-width="0" fill="currentColor" />
+              <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" stroke-width="0" fill="currentColor" />
+            </svg>
+          </div>
         </ul>
       </div>
       <div class="menu-icon" @click="toggleMenu" v-if="showMenuIcon">
@@ -84,6 +91,37 @@ a {
   color: black;
 }
 
+a:hover{
+  color: red;
+}
+
+.profile-icon {
+  display: flex;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.profile-icon:hover{
+  background: #989998;
+}
+
+.profile-icon svg {
+  /* Your custom styles for the SVG */
+  width: 55px;
+  height: 55px;
+  /* Additional styling as needed */
+}
+
+/* Example: Change fill color on hover */
+.profile-icon svg:hover {
+  
+}
+
+
 .menu-icon {
   display: none;
   flex-direction: column;
@@ -92,14 +130,15 @@ a {
 
 .bar1, .bar2, .bar3 {
   width: 30px;
-  height: 5px;
+  height: 4px;
+  border-radius: 5px;
   background-color: black;
   margin: 3px 0;
   transition: 0.4s;
 }
 
 .change.bar1 {
-  transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 5px);
 }
 
 .change.bar2 {
@@ -107,7 +146,7 @@ a {
 }
 
 .change.bar3 {
-  transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-9px, -5px);
 }
 
 @media (max-width: 768px) {
