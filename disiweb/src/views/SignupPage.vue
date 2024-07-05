@@ -3,80 +3,45 @@
       <div class="circle1"></div>
       <div class="circle2"></div>
       <div class="container">
-        <div class="log-card">
-          <p class="heading">Welcome Back</p>
-          <p>We are happy to have you Again</p>
-          <form @submit.prevent="login">
+        <div class="signup-card">
+          <p class="heading">Welcome!</p>
+          <p>We are happy to have you</p>
+          <form>
             <div class="input-group">
               <p class="text">Username</p>
-              <input class="input" type="text" v-model="loginData.username" placeholder="Enter Username" required>
+              <input class="input" type="text" placeholder="Enter Username" required>
+              <p class="text">Email</p>
+              <input class="input" type="email" placeholder="Enter Email" required>
+              <p class="text">Telephone</p>
+              <input class="input" type="tel" placeholder="07xxxxxxxx" required>
               <p class="text">Password</p>
-              <input class="input" type="password" v-model="loginData.password" placeholder="Enter Password" required>
+              <input class="input" type="password" placeholder="Enter Password" required>
             </div>
-            <div class="password-group">
-              <div class="checkbox-group">
-                <input type="checkbox">
-                <label class="label">Remember Me</label>
-              </div>
-              <a href="" class="forget-password">Forget Password</a>
-            </div>
-            <button type="submit" class="btn">Sign In</button>
+            <button type="submit" class="btn">Sign Up</button>
           </form>
-          <p class="no-account">Already Have an Account?<router-link to="/signup" class="link"> Sign Up</router-link></p>
+          <p class="no-account">Already Have an Account?<router-link to="/login" class="link"> Log in</router-link></p>
         </div>
       </div>
     </div>
   </template>
   
   <script>
-  import { reactive } from 'vue';
-  import axios from 'axios';
-  
   export default {
-    setup() {
-      const loginData = reactive({
-        username: '',
-        password: ''
-      });
-  
-      const login = async () => {
-        try {
-          const config = {
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${loginData.token}`
-            }
-          };
-  
-          const response = await axios.post('http://edms-enpoints.bitz-itc.com/api/auth/login', loginData, config);
-  
-          localStorage.setItem('edms_token', response.data.token);
-  
-          console.log(response.data);
-  
-          loginData.username = '';
-          loginData.password = '';
-        } catch (error) {
-          console.error('Error logging in:', error);
-        }
-      };
-  
-      return {
-        loginData,
-        login
-      };
-    }
+    name: 'SignupPage',
+    props: {
+      msg: String
+    },
   }
   </script>
   
   <style scoped>
   .card-container {
     width: 350px;
-    height: 440px;
+    height: 540px;
     background: transparent;
     position: relative;
     margin: auto;
-    top: 150px;
+    top: 100px;
   }
   
   .container {
@@ -107,7 +72,7 @@
     bottom: 0;
   }
   
-  .log-card {
+  .signup-card {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     position: absolute;
     width: 300px;
@@ -125,7 +90,7 @@
   }
   
   .text {
-    margin-top: 15px;
+    margin-top: 5px;
     margin-bottom: 0;
     font-size: 14px;
     font-weight: 600;
@@ -155,30 +120,6 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   }
   
-  .password-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-  }
-  
-  .checkbox-group {
-    color: black;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  
-  .forget-password {
-    font-size: 14px;
-    font-weight: 500;
-    color: #2879f3;
-    text-decoration: none;
-  }
-  
-  .forget-password:hover {
-    text-decoration: underline;
-    color: #f37e10;
-  }
-  
   .btn {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -193,11 +134,6 @@
   
   .btn:hover {
     background-color: #0653c7;
-  }
-  
-  .no-account {
-    font-size: 16px;
-    font-weight: 400;
   }
   
   .link {

@@ -19,6 +19,8 @@
   </script>
   
   <style scoped>
-  /* Add any additional styles if necessary */
+  .cart{
+    overflow-x: hidden;
+  }
   </style>
   

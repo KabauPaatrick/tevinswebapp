@@ -8,6 +8,7 @@ import Testimonials from '@/views/TestimonialView.vue';
 import HomePage from '@/views/HomePage.vue';
 import Solutions from '@/views/SolutionsView.vue';
 import LoginPage from '@/views/LoginPage.vue';
+import SignupPage from '@/views/SignupPage.vue'
 import DocumentUpload from '@/views/DocumentUpload.vue';
 import Licenses from '@/views/LicenseAdmin.vue';
 import Contact from '@/views/ContactView.vue';
@@ -74,6 +75,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginPage
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: SignupPage
   },
   {
     path: '/upload',
