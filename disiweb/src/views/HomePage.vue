@@ -1,81 +1,84 @@
 <template>
-    <div class="container mt-5">
-        <!-- Home View Form -->
-        <div class="card mb-4">
-            <div class="card-header">
-                <h2 class="mb-0">Create New Home View</h2>
-            </div>
-            <div class="card-body">
-                <form @submit.prevent="submitHomeView" class="form">
-                    <div class="form-group">
-                        <label for="title" class="form-label">Title:</label>
-                        <input type="text" id="title" v-model="homeView.title" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="description" class="form-label">Description:</label>
-                        <textarea id="description" v-model="homeView.description" class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="ctatext" class="form-label">CTA Text:</label>
-                        <input type="text" id="ctatext" v-model="homeView.ctatext" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="image" class="form-label">Image:</label>
-                        <input type="file" id="image" @change="handleImageUpload" class="form-control" accept="image/*" required>
-                    </div>
-                    <div class="form-group" v-if="entities.length > 0">
-                        <label for="entity" class="form-label">Entity:</label>
-                        <select v-model="homeView.entity" id="entity" class="form-control" required>
-                            <option v-for="entity in entities" :key="entity.id" :value="entity.id">{{ entity.name }}</option>
-                        </select>
-                    </div>
-                    <div v-else>
-                        Loading entities...
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-12 d-flex justify-content-between">
-                            <button type="submit" class="btn btn-primary">Add Home View</button>
-                            <button type="button" class="btn btn-primary" @click="updateHomeView(homeView.id)">Update</button>
+    <div>
+        <AdminNav />
+        <div class="container mt-5">
+            <!-- Home View Form -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="mb-0">Create New Home View</h2>
+                </div>
+                <div class="card-body">
+                    <form @submit.prevent="submitHomeView" class="form">
+                        <div class="form-group">
+                            <label for="title" class="form-label">Title:</label>
+                            <input type="text" id="title" v-model="homeView.title" class="form-control" required>
                         </div>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <label for="description" class="form-label">Description:</label>
+                            <textarea id="description" v-model="homeView.description" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="ctatext" class="form-label">CTA Text:</label>
+                            <input type="text" id="ctatext" v-model="homeView.ctatext" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="image" class="form-label">Image:</label>
+                            <input type="file" id="image" @change="handleImageUpload" class="form-control" accept="image/*" required>
+                        </div>
+                        <div class="form-group" v-if="entities.length > 0">
+                            <label for="entity" class="form-label">Entity:</label>
+                            <select v-model="homeView.entity" id="entity" class="form-control" required>
+                                <option v-for="entity in entities" :key="entity.id" :value="entity.id">{{ entity.name }}</option>
+                            </select>
+                        </div>
+                        <div v-else>
+                            Loading entities...
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12 d-flex justify-content-between">
+                                <button type="submit" class="btn btn-primary">Add Home View</button>
+                                <button type="button" class="btn btn-primary" @click="updateHomeView(homeView.id)">Update</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
 
-        <!-- Home View Table -->
-        <div class="card">
-            <div class="card-header">
-                <h2 class="mb-0">Home View List</h2>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>CTA Text</th>
-                                <th>Image</th>
-                                <th>Entity</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="(homeView, index) in homeViews" :key="index">
-                                <td>{{ homeView.title }}</td>
-                                <td>{{ homeView.description }}</td>
-                                <td>{{ homeView.ctatext }}</td>
-                                <td>
-                                    <img :src="homeView.image" alt="Home View Image" style="max-width: 100px; max-height: 100px;">
-                                </td>
-                                <td>{{ getEntityName(homeView.entity) }}</td>
-                                <td>
-                                    <button @click="deleteHomeView(homeView.id)" class="btn btn-danger mr-2">Delete</button>
-                                    <button @click="updateHomeViewForm(homeView)" class="btn btn-primary">Update</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- Home View Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Home View List</h2>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>CTA Text</th>
+                                    <th>Image</th>
+                                    <th>Entity</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(homeView, index) in homeViews" :key="index">
+                                    <td>{{ homeView.title }}</td>
+                                    <td>{{ homeView.description }}</td>
+                                    <td>{{ homeView.ctatext }}</td>
+                                    <td>
+                                        <img :src="homeView.image" alt="Home View Image" style="max-width: 100px; max-height: 100px;">
+                                    </td>
+                                    <td>{{ getEntityName(homeView.entity) }}</td>
+                                    <td>
+                                        <button @click="deleteHomeView(homeView.id)" class="btn btn-danger mr-2">Delete</button>
+                                        <button @click="updateHomeViewForm(homeView)" class="btn btn-primary">Update</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,8 +88,13 @@
 <script>
 import { reactive, onMounted, ref } from 'vue';
 import axios from 'axios';
+import AdminNav from '@/components/AdminNav.vue';
 
 export default {
+    name: 'NewAdminNPage', 
+    components: {
+      AdminNav,
+    },
     setup() {
         const homeView = reactive({
             id: '',

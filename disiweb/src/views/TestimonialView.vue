@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <AdminNav />
     <div class="container mt-5">
       <!-- Testimonials Form -->
       <div class="card mb-4">
@@ -89,13 +91,19 @@
         </div>
       </div>
     </div>
+  </div>
   </template>
   
   <script>
   import { reactive, onMounted, ref } from 'vue';
   import axios from 'axios';
+  import AdminNav from '@/components/AdminNav.vue';
   
   export default {
+    name: 'NewAdminNPage', 
+    components: {
+      AdminNav,
+    },
     setup() {
       const testimonial = reactive({
         author: '',

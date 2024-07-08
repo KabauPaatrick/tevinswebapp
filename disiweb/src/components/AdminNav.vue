@@ -103,7 +103,7 @@ body {
 
 .sidebar .sidebar-header img {
   width: 42px;
-  /* margin-left: -10px; */
+  margin-left: -15px;
 }
 
 .sidebar .sidebar-header h2 {

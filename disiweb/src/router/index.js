@@ -15,7 +15,6 @@ import Contact from '@/views/ContactView.vue';
 import CartPage from '@/views/CartPage.vue';
 import ItemPage from '@/views/ItemPage.vue';
 import ProductsPage from '@/views/ProductsPage.vue';
-import NewAdminPage from '@/views/NewAdminPage.vue';
 const routes = [
   {
     path: '/',
@@ -101,11 +100,6 @@ const routes = [
     path: '/products',
     name: 'ProductPage',
     component: ProductsPage
-  },
-  {
-    path: '/newadminpage',
-    name: 'NewAdminPage',
-    component: NewAdminPage
   },
 ];
 

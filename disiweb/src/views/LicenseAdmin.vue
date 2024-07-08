@@ -1,104 +1,107 @@
 <template>
-  <div class="container mt-5">
-    <!-- Solution Form -->
-    <div class="card mb-4">
-      <div class="card-header">
-        <h2 class="mb-0">Add a New License</h2>
+  <div>
+    <AdminNav />
+    <div class="container mt-5">
+      <!-- Solution Form -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h2 class="mb-0">Add a New License</h2>
+        </div>
+        <div class="card-body">
+          <form @submit.prevent="submitLicense" class="form">
+            <div class="row">
+              <div class="col-md-6">
+                <!-- Input fields for solution -->
+                <div class="form-group">
+                  <label for="name" class="form-label">Name:</label>
+                  <input type="text" id="name" v-model="license.name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="description" class="form-label">Description:</label>
+                  <textarea id="description" v-model="license.description" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="ctatext" class="form-label">CTA Text:</label>
+                  <input type="text" id="ctatext" v-model="license.ctatext" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="createdBy" class="form-label">Created By:</label>
+                  <input type="text" id="createdBy" v-model="license.created_by" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="createdAt" class="form-label">Created At:</label>
+                  <input type="date" id="createdAt" v-model="license.createdAt" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="updatedAt" class="form-label">Updated At:</label>
+                  <input type="date" id="updatedAt" v-model="license.updatedAt" class="form-control" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <!-- Input fields for solution -->
+                <div class="form-group">
+                  <label for="licenseImage" class="form-label">Image:</label>
+                  <input type="file" id="licenseImage" @change="handleImageUpload" class="form-control" accept="image/*" required>
+                </div>
+                <!-- Entity field -->
+                <div class="form-group">
+                  <label for="entity" class="form-label">Entity:</label>
+                  <select v-model="license.entity" id="entity" class="form-control" required>
+                    <option v-for="entity in entities" :key="entity.id" :value="entity.id">{{ entity.name }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!-- Submit and update buttons -->
+            <div class="row mt-3">
+              <div class="col-md-12 d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">Add License</button>
+                <button type="button" class="btn btn-primary" @click="updateLicenseonSubmit(license.id)">Update Solution</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-      <div class="card-body">
-        <form @submit.prevent="submitLicense" class="form">
-          <div class="row">
-            <div class="col-md-6">
-              <!-- Input fields for solution -->
-              <div class="form-group">
-                <label for="name" class="form-label">Name:</label>
-                <input type="text" id="name" v-model="license.name" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label for="description" class="form-label">Description:</label>
-                <textarea id="description" v-model="license.description" class="form-control" required></textarea>
-              </div>
-              <div class="form-group">
-                <label for="ctatext" class="form-label">CTA Text:</label>
-                <input type="text" id="ctatext" v-model="license.ctatext" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label for="createdBy" class="form-label">Created By:</label>
-                <input type="text" id="createdBy" v-model="license.created_by" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label for="createdAt" class="form-label">Created At:</label>
-                <input type="date" id="createdAt" v-model="license.createdAt" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label for="updatedAt" class="form-label">Updated At:</label>
-                <input type="date" id="updatedAt" v-model="license.updatedAt" class="form-control" required>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <!-- Input fields for solution -->
-              <div class="form-group">
-                <label for="licenseImage" class="form-label">Image:</label>
-                <input type="file" id="licenseImage" @change="handleImageUpload" class="form-control" accept="image/*" required>
-              </div>
-              <!-- Entity field -->
-              <div class="form-group">
-                <label for="entity" class="form-label">Entity:</label>
-                <select v-model="license.entity" id="entity" class="form-control" required>
-                  <option v-for="entity in entities" :key="entity.id" :value="entity.id">{{ entity.name }}</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <!-- Submit and update buttons -->
-          <div class="row mt-3">
-            <div class="col-md-12 d-flex justify-content-between">
-              <button type="submit" class="btn btn-primary">Add License</button>
-              <button type="button" class="btn btn-primary" @click="updateLicenseonSubmit(license.id)">Update Solution</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
 
-    <!-- Solution Table -->
-    <div class="card">
-      <div class="card-header">
-        <h2 class="mb-0">License List</h2>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>CTA Text</th>
-                <th>Image</th>
-                <th>Created By</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-                <th>Entity</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(license, index) in licenses" :key="index">
-                <td>{{ license.name }}</td>
-                <td>{{ license.description }}</td>
-                <td>{{ license.ctatext }}</td>
-                <td><img :src="license.license_images" alt="License Image" style="max-width: 100px;"></td>
-                <td>{{ license.createdBy }}</td>
-                <td>{{ formatDate(license.createdAt) }}</td>
-                <td>{{ formatDate(license.updatedAt) }}</td>
-                <td>{{ getEntityName(license.entity) }}</td>
-                <td class="d-flex">
-                  <button @click="deleteLicense(license.id)" class="btn btn-danger mr-2">Delete</button>
-                  <button @click="updateLicenseForm(license)" class="btn btn-primary">Update</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- Solution Table -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="mb-0">License List</h2>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>CTA Text</th>
+                  <th>Image</th>
+                  <th>Created By</th>
+                  <th>Created At</th>
+                  <th>Updated At</th>
+                  <th>Entity</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(license, index) in licenses" :key="index">
+                  <td>{{ license.name }}</td>
+                  <td>{{ license.description }}</td>
+                  <td>{{ license.ctatext }}</td>
+                  <td><img :src="license.license_images" alt="License Image" style="max-width: 100px;"></td>
+                  <td>{{ license.createdBy }}</td>
+                  <td>{{ formatDate(license.createdAt) }}</td>
+                  <td>{{ formatDate(license.updatedAt) }}</td>
+                  <td>{{ getEntityName(license.entity) }}</td>
+                  <td class="d-flex">
+                    <button @click="deleteLicense(license.id)" class="btn btn-danger mr-2">Delete</button>
+                    <button @click="updateLicenseForm(license)" class="btn btn-primary">Update</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -108,11 +111,16 @@
 <script>
 import { reactive, onMounted, ref } from 'vue';
 import axios from 'axios';
+import AdminNav from '@/components/AdminNav.vue';
 
 const formatDate = (dateString) => {
   return new Date(dateString).toISOString().split('T')[0]; // Format the date string to remove time
 };
 export default {
+  name: 'NewAdminNPage', 
+    components: {
+      AdminNav,
+    },
   setup() {
     const license = reactive({
       name: '',
