@@ -89,6 +89,7 @@ body {
   background: #cacbd5;
   padding: 25px 20px;
   transition: all 0.4s ease;
+  z-index: 1;
 }
 
 .sidebar:hover {
@@ -102,7 +103,7 @@ body {
 
 .sidebar .sidebar-header img {
   width: 42px;
-  margin-left: -15px;
+  /* margin-left: -10px; */
 }
 
 .sidebar .sidebar-header h2 {

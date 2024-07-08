@@ -1,7 +1,8 @@
 <template>
-  <body>
+  <div>
+    <AdminNav />
     <h1 class="text-center mb-4">Admin Dashboard</h1>
-    <div class="container mt-5">
+    <div class="container mt-5" :class="{ 'sidebar-expanded': sidebarExpanded }">
       <div class="main-card">
         <div class="card-body">
           <div class="row">
@@ -74,40 +75,58 @@
         </div>
       </div>
     </div>
-  </body>
+  </div>
 </template>
 
 <script>
+import AdminNav from '@/components/AdminNav.vue';
+
 export default {
-  // Add necessary logic here
+  name: 'NewAdminNPage',
+  components: {
+    AdminNav,
+  },
+  data() {
+    return {
+      sidebarExpanded: false
+    };
+  },
+  mounted() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.addEventListener('mouseenter', () => {
+      this.sidebarExpanded = true;
+    });
+    sidebar.addEventListener('mouseleave', () => {
+      this.sidebarExpanded = false;
+    });
+  },
 };
 </script>
 
 <style scoped>
-body{
+body {
   padding: 10px;
   bottom: 0;
   height: 100%;
 }
 
-h1{
-  color: black; 
+h1 {
+  color: black;
 }
 
-h5{
-  color:black;
+h5 {
+  color: black;
 }
 
-.main-card{
+.main-card {
   padding: 20px;
   border-radius: 8px;
   max-width: 1800px;
   text-align: left;
   gap: 10px;
-
 }
 
-.card-body{
+.card-body {
   color: black;
 }
 
@@ -117,13 +136,22 @@ h5{
   color: black;
 }
 
-.btn{
+.btn {
   background: orangered;
   border: none;
 }
 
-.btn:hover{
+.btn:hover {
   background: #3a6ea5;
 }
 
+.container.sidebar-expanded {
+  padding-left: 160px; /* Adjust this value to match the expanded sidebar width */
+}
+
+@media (max-width: 992px) {
+  .container.sidebar-expanded {
+    padding-left: 75px; /* Adjust for smaller screens where sidebar is collapsed */
+  }
+}
 </style>
