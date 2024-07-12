@@ -57,7 +57,10 @@ INSTALLED_APPS = [
     'Homeview',
     'HeroPage',
     'testimonials',
-    'license'
+    'license',
+    'logo',
+    'login',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -101,7 +104,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'disiweb',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'Pato@254',
         'HOST': 'localhost',
         'PORT': '3306',
         # 'OPTIONS': {
@@ -155,5 +158,12 @@ REST_FRAMEWORK = {
     )
 }
 
-AUTH_USER_MODEL = 'accounts.MyUser'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'kabaupaatrick@gmail.com'  # Your email address
+EMAIL_HOST_PASSWORD = 'pwci uumf rbhj vjdg'  # Your email password or app password
 
+
+AUTH_USER_MODEL = 'users.User'
