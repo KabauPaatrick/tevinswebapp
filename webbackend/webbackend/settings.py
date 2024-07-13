@@ -58,9 +58,8 @@ INSTALLED_APPS = [
     'HeroPage',
     'testimonials',
     'license',
-    'logo',
-    'login',
-    'users'
+    'users',
+    'logo'
 ]
 
 MIDDLEWARE = [

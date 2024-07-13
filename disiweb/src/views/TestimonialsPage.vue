@@ -1,6 +1,6 @@
 <template>
   <div v-if="testimonials.length > 0" class="testimonials">
-    <h2>Testimonials</h2>
+    <h1>Testimonials</h1>
     <div class="testimonial-cards">
       <div v-for="testimonial in testimonials" :key="testimonial.id" class="t-cards">
         <img class="t-image" :src="testimonial.testimonial_image" alt="Testimonial Image" />

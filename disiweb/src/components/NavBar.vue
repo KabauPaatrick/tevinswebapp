@@ -9,6 +9,7 @@
           <router-link to="/">Support</router-link>
           <router-link to="/">Country</router-link>
           <router-link to="/products">Shop</router-link>
+          <router-link to="/signup">
           <div class="profile-icon" v-if="!showMenuIcon">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -16,6 +17,7 @@
               <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" stroke-width="0" fill="currentColor" />
             </svg>
           </div>
+        </router-link>
         </ul>
       </div>
       <div class="menu-icon" @click="toggleMenu" v-if="showMenuIcon">

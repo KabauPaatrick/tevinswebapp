@@ -9,12 +9,13 @@
             <label for="email">Email address</label>
             <input type=" email" id="email" name="email" placeholder="Enter your email address" />
 
-            <button type="submit">{{ buttonText }}</button>
+            <router-link to="/contact"><button type="submit">{{ buttonText }}</button></router-link>
         </form>
     </div>
 </template>
 
 <script>
+
 export default {
     props: {
         buttonText: String,
