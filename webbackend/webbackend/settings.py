@@ -70,6 +70,7 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': '8Hwz-YRED2DXRsspD_wzNDO67OI',
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_URL = 'cloudinary://87641184772337:8Hwz-YRED2DXRsspD_wzNDO67OI@dkekd92kz'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
