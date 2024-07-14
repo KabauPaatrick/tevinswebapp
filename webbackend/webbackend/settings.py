@@ -59,8 +59,17 @@ INSTALLED_APPS = [
     'testimonials',
     'license',
     'users',
-    'logo'
+    'logo',
+    'product',
+     'cloudinary',
+    'cloudinary_storage',
 ]
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dkekd92kz',
+    'API_KEY': '187641184772337',
+    'API_SECRET': '8Hwz-YRED2DXRsspD_wzNDO67OI',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
