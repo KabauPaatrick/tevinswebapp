@@ -32,7 +32,7 @@
     </main>
 
     <footer>
-      <p>&copy; {{ year }} Your Company Name</p>
+      <p>&copy; {{ year }} Byden Construction and Services</p>
     </footer>
 
     <div v-if="showChatWidget" id="tawkWidget"></div>

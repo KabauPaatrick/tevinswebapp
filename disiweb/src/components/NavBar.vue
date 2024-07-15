@@ -11,9 +11,11 @@
           <router-link to="/">Support</router-link>
           <router-link to="/">Country</router-link>
           <router-link to="/products">Shop</router-link>
+          <router-link to="/signup">
           <div class="profile-icon" v-if="!showMenuIcon">
             <span class="material-symbols-outlined">person</span>
           </div>
+        </router-link>
         </ul>
       </div>
       <div class="menu-icon" @click="toggleMenu" v-if="showMenuIcon">
