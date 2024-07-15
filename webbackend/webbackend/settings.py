@@ -57,8 +57,20 @@ INSTALLED_APPS = [
     'Homeview',
     'HeroPage',
     'testimonials',
-    'license'
+    'license',
+    'users',
+    'logo',
+    'product',
+     'cloudinary',
+    'cloudinary_storage',
 ]
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dkekd92kz',
+    'API_KEY': '187641184772337',
+    'API_SECRET': '8Hwz-YRED2DXRsspD_wzNDO67OI',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_URL = 'cloudinary://87641184772337:8Hwz-YRED2DXRsspD_wzNDO67OI@dkekd92kz'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -101,7 +113,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'disiweb',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'Pato@254',
         'HOST': 'localhost',
         'PORT': '3306',
         # 'OPTIONS': {
@@ -155,5 +167,12 @@ REST_FRAMEWORK = {
     )
 }
 
-AUTH_USER_MODEL = 'accounts.MyUser'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'kabaupaatrick@gmail.com'  # Your email address
+EMAIL_HOST_PASSWORD = 'pwci uumf rbhj vjdg'  # Your email password or app password
 
+
+AUTH_USER_MODEL = 'users.User'
