@@ -39,6 +39,13 @@ urlpatterns = [
     path('api/', include('login.urls')), 
     path('api/', include('logo.urls')),
     path('api/products/', include('product.urls')),
+    path('api/category/', include('category.urls')),
+    path('api/brand/', include('brands.urls')),
+    path('api/color/', include('colors.urls')),
+    path('api/enquiry/', include('Enquiry.urls')),
+    path('api/payments/', include('payments.urls')),
+
+
 
 
     # Include HomeView app URLs

@@ -71,6 +71,15 @@
                 </div>
               </div>
             </div>
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">View Orders</h5>
+                  <p class="card-text">View Customer Orders</p>
+                  <router-link :to="{ name: 'OrdersPage' }" class="btn btn-primary">View Customer Orders</router-link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

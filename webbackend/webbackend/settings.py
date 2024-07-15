@@ -1,5 +1,8 @@
 import os
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Define the base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -63,6 +66,11 @@ INSTALLED_APPS = [
     'product',
      'cloudinary',
     'cloudinary_storage',
+    'category',
+    'brands',
+    'colors',
+    'Enquiry',
+    'payments',
 ]
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dkekd92kz',
@@ -71,6 +79,13 @@ CLOUDINARY_STORAGE = {
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CLOUDINARY_URL = 'cloudinary://87641184772337:8Hwz-YRED2DXRsspD_wzNDO67OI@dkekd92kz'
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+}
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
