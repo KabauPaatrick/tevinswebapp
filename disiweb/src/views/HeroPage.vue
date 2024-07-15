@@ -1,19 +1,16 @@
 <template>
-  <div v-if="isContentAvailable" class="hero">
-    <div class="image-container">
-      <img :src="content.imageUrl" alt="Hero Image" />
-    </div>
-    <div class="description">
+  <div v-if="isContentAvailable" class="hero" :style="{ backgroundImage: `url(${content.imageUrl})` }">
+    <div class="overlay"></div>
+    <div class="hero-description">
       <h3>{{ content.title }}</h3>
       <p>{{ content.description }}</p>
-      <button class="left-aligned-button" @click="gotoContact">{{ content.ctaText }}</button>
+      <button class="hero-button" @click="gotoContact">{{ content.ctaText }}</button>
     </div>
   </div>
 </template>
 
-  
 <script>
-  import router from '@/router';
+import router from '@/router';
 import { reactive, onMounted, computed } from 'vue';
 
 export default {
@@ -65,36 +62,59 @@ export default {
     };
   }
 };
-
 </script>
-  
+
 <style scoped>
 .hero {
-  margin-top: 20px;
+  position: relative; /* Ensure relative positioning for stacking */
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  flex-direction: column;
   padding: 40px;
-  color: black;
-  border-radius: 15px;
   margin-bottom: 30px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 70vh;
+  text-align: center;
+  color: white; /* Adjust text color for better contrast */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+}
+
+.hero-description {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  max-width: 80%;
+  
 }
 
 .hero h3 {
-  font-size: 2rem;
-  font-weight: bolder;
+  font-size: 50px;
   line-height: 1.2;
   margin-bottom: 15px;
-  text-align: left;
 }
 
 .hero p {
-  font-size: 1.5em;
+  font-size: 25px;
   line-height: 1.5;
-  text-align: left;
+  margin-bottom: 15px;
 }
 
-.hero button {
+.hero-button {
   font-size: 1em;
   background-color: #f2630d;
   color: white;
@@ -102,56 +122,28 @@ export default {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  margin-top: 20px;
 }
 
 .hero button:hover {
   background-color: #3a6ea5;
-  color: white;
 }
 
-.hero .image-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 0px;
-}
-
-.hero .description {
-  flex: 1;
-  padding-left: 20px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .hero {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+    height: 100vh; /* Adjust height for smaller screens */
   }
 
-  .hero h3,  .hero button {
-    margin-left: 0;
-    margin-right: 0;
-    text-align: center;
+  .hero h3 {
+    font-size: 6vw; /* Adjust font size for smaller screens */
   }
 
-  .hero p{
-    margin-left: 0;
-    margin-right: 0;
-    text-align: left;
+  .hero p {
+    font-size: 4vw; /* Adjust font size for smaller screens */
   }
 
-  .hero .description {
-    padding-left: 0;
-    padding-top: 20px;
+  .cta-button {
+    font-size: 3vw; /* Adjust font size for smaller screens */
   }
 }
 </style>
+

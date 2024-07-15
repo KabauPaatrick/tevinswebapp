@@ -210,7 +210,7 @@ body {
 .products {
   display: flex;
   flex-wrap: wrap;
-  /* background: #cacbd5; */
+  /* background: #cacb5d; */
   justify-content: flex-start;
   width: 98%;
   padding: 10px;
