@@ -1,63 +1,87 @@
 <template>
-    <div class="lead-capture">
-        <h2>Contact Us!</h2>
-
-        <form ref="form">
-            <label for="phone_number">Phone Number</label>
-            <label for="">Tel:0720964887</label>
-
-            <label for="email">Email address</label>
-            <input type=" email" id="email" name="email" placeholder="Enter your email address" />
-
-            <router-link to="/contact"><button type="submit">{{ buttonText }}</button></router-link>
-        </form>
+  <section class="contact">
+    <div class="Box">
+      <aside class="contact__aside">
+        <div class="aside__image">
+          <img src="@/assets/images/talking.gif" alt="" id="lead-image">
+        </div>
+        <h2>Contact Us</h2>
+        <p>Do you have any questions or issues you'd like to address? Contact Us through the given details:</p>
+        <label for="">Tel:0720964887</label>
+      </aside>
+      <form ref="form" class="contact__form">
+        <div class="form-data">
+          <input type="email" id="email" name="email" placeholder="Enter email">
+        </div>
+        <router-link to="/contact">
+          <button type="submit">{{ buttonText }}</button>
+        </router-link>
+      </form>
     </div>
+  </section>
 </template>
 
 <script>
-
 export default {
-    props: {
-        buttonText: String,
-    },
+  props: {
+    buttonText: String,
+  },
 };
 </script>
 
 <style scoped>
-.lead-capture {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    min-height: 80vh;
-    color: black;
-    width: 700px;
-    background: #cacbd5;
-    box-shadow: rgb(31 38 135, 0.37 );
-    border-radius: 10px;
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.lead-capture h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
+.Box {
+  background: rgba(106, 188, 226, 0.25);
+  box-shadow: rgb(31 38 135, 0.37);
+  backdrop-filter: blur(0px);
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: 40% 40% 20%;
+  gap: 4rem;
+  height: 30rem;
+  border-radius: 1rem;
+  width: 800px;
 }
 
-/* Style for the form */
-.lead-capture form {
-  max-width: 400px;
-  margin: 0 auto;
+.contact__aside {
+  background: #007bff;
+  padding: 3rem;
+  border-radius: 1rem;
+  position: relative;
+  bottom: 10rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  color: white;
 }
 
-.lead-capture label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
+#lead-image{
+  width: 200px;
 }
 
-.lead-capture input {
+.contact__aside h2 {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.contact__aside p {
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-right: 4rem;
+}
+
+.contact__form input[type="email"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -66,7 +90,7 @@ export default {
   box-sizing: border-box;
 }
 
-.lead-capture button {
+.contact__form button {
   background-color: orangered;
   color: #fff;
   padding: 10px 20px;
@@ -78,16 +102,14 @@ export default {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect for the button */
-.lead-capture button:hover {
+.contact__form button:hover {
   background-color: #007bff;
   transform: scale(1.05);
 }
 
-/* Responsive styling */
 @media screen and (max-width: 600px) {
-  .lead-capture input,
-  .lead-capture button {
+  .contact__form input[type="email"],
+  .contact__form button {
     width: 100%;
   }
 }
