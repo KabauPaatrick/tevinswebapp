@@ -1,5 +1,7 @@
 <template>
   <nav>
+    <link rel="stylesheet" 
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <div class="nav-container">
       <h1>E-Commerce</h1>
       <div class="nav-items">
@@ -10,11 +12,7 @@
           <router-link to="/">Country</router-link>
           <router-link to="/products">Shop</router-link>
           <div class="profile-icon" v-if="!showMenuIcon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-              <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" stroke-width="0" fill="currentColor" />
-              <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" stroke-width="0" fill="currentColor" />
-            </svg>
+            <span class="material-symbols-outlined">person</span>
           </div>
         </ul>
       </div>
@@ -60,7 +58,7 @@ export default {
 <style scoped>
 nav {
   background: #d5d5d5;
-  width: 100vw;
+  width: 1fr;
   height: 75px;
   top: 0;
   padding: 20px;
@@ -108,19 +106,6 @@ a:hover{
 .profile-icon:hover{
   background: #989998;
 }
-
-.profile-icon svg {
-  /* Your custom styles for the SVG */
-  width: 55px;
-  height: 55px;
-  /* Additional styling as needed */
-}
-
-/* Example: Change fill color on hover */
-.profile-icon svg:hover {
-  
-}
-
 
 .menu-icon {
   display: none;

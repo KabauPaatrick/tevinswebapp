@@ -47,6 +47,11 @@
           </router-link>
         </li>
         <li>
+          <router-link :to="{name: 'OrdersPage'}">
+            <span class="material-symbols-outlined">shopping_cart</span>Orders
+          </router-link>
+        </li>
+        <li>
           <router-link :to="{ name: 'login' }">
             <span class="material-symbols-outlined">logout</span>Logout
           </router-link>

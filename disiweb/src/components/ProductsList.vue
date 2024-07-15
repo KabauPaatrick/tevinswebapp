@@ -37,12 +37,12 @@
     <div class="products">
       <div class="product1">
         <img src="@/assets/images/towelproduct.jpg" alt="" id="product-image">
-        <h1>Item 1</h1>
-        <h5>$100</h5>
+        <h1>Utopia Towels 2 Pack Premium Bath Towels Set, (27 x 54 Inches) 100% Ring Spun Cotton 600GSM, Lightweight and Highly Absorbent Quick Drying Towels, Perfect for Daily Use</h1>
+        <h5>$99.99</h5>
         <button id="go" @click="gotoproduct">View Item</button>
       </div>
       <div class="product1">
-        <img src="@/assets/images/towelproduct.jpg" alt="" id="product-image">
+        <img src="@/assets/images/headphones.png" alt="" id="product-image">
         <h1>Item 1</h1>
         <h5>$100</h5>
         <button id="go" @click="gotoproduct">View Item</button>
@@ -210,23 +210,40 @@ body {
 .products {
   display: flex;
   flex-wrap: wrap;
+  /* background: #cacbd5; */
   justify-content: flex-start;
   width: 98%;
   padding: 10px;
   margin-bottom: 30px;
-  gap: 20px;
+  gap: 10px;
   border-radius: 15px;
   padding-left: 80px;
 }
 
 .product1 {
-  height: 320px;
+  height: 350px;
   width: 250px;
-  background: #cacbd5;
-  padding: 20px;
+  /* background: #e9e9e9; */
+  padding: 10px;
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: 5px;
   color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Adjust vertical spacing */
+}
+
+.product1 h1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  margin-bottom: 10px; /* Space between h1 and other elements */
+}
+
+.product1:hover{
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .product1 h1 {
@@ -238,8 +255,8 @@ body {
 }
 
 #product-image {
-  width: 210px;
-  height: 170px;
+  width: 100%;
+  height: 200px;
 }
 
 #go {
