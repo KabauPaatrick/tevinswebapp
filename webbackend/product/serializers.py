@@ -1,13 +1,17 @@
 from rest_framework import serializers
 from .models import Product, ProductImage, Color, Category, Brand
-import cloudinary.uploader
+
+class ColorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Color
+        fields = ['id', 'title', 'created_at', 'updated_at']
 
 class ProductImageSerializer(serializers.ModelSerializer):
     file = serializers.ImageField()
 
     class Meta:
         model = ProductImage
-        fields = ['file', 'id', 'asset_id', 'public_id']
+        fields = ['id', 'file', 'asset_id', 'public_id']
 
     def create(self, validated_data):
         file = validated_data.pop('file')
@@ -29,40 +33,16 @@ class ProductImageSerializer(serializers.ModelSerializer):
         return super().update(instance, validated_data)
 
 class ProductSerializer(serializers.ModelSerializer):
-    images = ProductImageSerializer(many=True)
+    images = ProductImageSerializer(many=True, read_only=True)
+    colors = ColorSerializer(read_only=True, many=True)
+    brand = serializers.SlugRelatedField(slug_field='title', queryset=Brand.objects.all())
+    category = serializers.SlugRelatedField(slug_field='title', queryset=Category.objects.all())
 
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ['id', 'title', 'description', 'slug', 'price', 'category', 'brand', 'quantity', 'sold', 'images', 'colors', 'tags', 'total_ratings', 'ratings', 'created_at', 'updated_at']
 
-    def create(self, validated_data):
-        images_data = validated_data.pop('images')
-        product = Product.objects.create(**validated_data)
-        
-        for image_data in images_data:
-            ProductImage.objects.create(product=product, **image_data)
-
-        return product
-
-    def update(self, instance, validated_data):
-        images_data = validated_data.pop('images', None)
-        instance = super().update(instance, validated_data)
-
-        if images_data:
-            # Update existing images and create new ones if they don't exist
-            existing_images = {image.id: image for image in instance.images.all()}
-            for image_data in images_data:
-                image_id = image_data.get('id')
-                if image_id and image_id in existing_images:
-                    existing_image = existing_images.pop(image_id)
-                    for attr, value in image_data.items():
-                        setattr(existing_image, attr, value)
-                    existing_image.save()
-                else:
-                    ProductImage.objects.create(product=instance, **image_data)
-            
-            # Delete images that were not included in the new data
-            for image in existing_images.values():
-                image.delete()
-
-        return instance
+class SingleProductResponseSerializer(serializers.Serializer):
+    success = serializers.BooleanField()
+    data = ProductSerializer()
+    message = serializers.CharField()

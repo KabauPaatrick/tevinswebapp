@@ -12,4 +12,3 @@ urlpatterns = [
     path('<uuid:pk>/delete/', CategoryViewSet.as_view({'delete': 'destroy'}), name='product-delete'),
 ]
 
-urlpatterns += router.urls
