@@ -2,7 +2,7 @@
   <body>
     <div class="cartitem">
       <div class="opt-images">
-        <div class="img-box" @mouseover="displayImage(require('@/assets/images/picun-headphones.jpg'), 0)">
+        <div class="img-box" @mouseover="displayImage(require(product.image), 0)">
           <img src="@/assets/images/picun-headphones.jpg" alt="" id="opt-img">
         </div>
         <div class="img-box" @mouseover="displayImage(require('@/assets/images/cones.jpg'), 1)">
@@ -24,33 +24,34 @@
       </div>
 
       <div class="cartitem-left">
-        <img src="@/assets/images/headphones.png" alt="Cart Item Image" id="cartimage">
+        <img :src="product.image" alt="Cart Item Image" id="cartimage">
       </div>
 
       <div class="cartitem-right">
-        <h4 id="title">Picun Wireless Headphones, 120 Hours Headphones Wireless, Hands-Free Calls, 3EQ &Game Mode, Foldable Headphones Over Ear For Travel Home Office Cellphone PC</h4>
+        <h4 id="title">{{product.title}}</h4>
         <div class="seller">
           <h5 id="seller-h5">Provided by |</h5>
-          <img src="@/assets/images/TUK.jpg" alt="">
+          <img :src="product.image" alt="">
           <h5 id="seller">Seller 1</h5>
         </div>
         <div class="rating">
-          <span class="material-symbols-outlined star-icon">star</span>
-          <span class="material-symbols-outlined star-icon">star</span>
-          <span class="material-symbols-outlined star-icon">star</span>
-          <span class="material-symbols-outlined star-icon">star</span>
-          <span class="material-symbols-outlined star-icon">star_half</span>
+          <span 
+            v-for="(rating, index) in product.ratings" 
+            :key="index" 
+            class="material-symbols-outlined star-icon">
+            star
+          </span>
         </div>
-        <h5 id="price">$99<sup>99</sup></h5>
+        <h5 id="price">ksh{{product.price}}</h5>
         <div class="count">
           <span class="material-symbols-outlined count-icon">hourglass_bottom</span>
           <h5 id="units">10 Units left</h5>
         </div>
         <div class="number">
           <h5 id="quantity">Quantity</h5>
-          <input type="number" placeholder="1">
+          <input type="number" v-model="quantity" placeholder="1">
         </div>
-        <button id="go" @click="addtocart"><span class="material-symbols-outlined cart-icon">shopping_cart</span>Add to Cart</button>
+        <button id="addtocart" @click="addToCart(product.id)"><span class="material-symbols-outlined cart-icon">shopping_cart</span>Add to Cart</button>
       </div>
 
       <div class="more-details">
@@ -120,25 +121,40 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'CartItem',
   props: {
     msg: String
   },
+  data() {
+    return {
+      product: {},
+      quantity: 1
+    };
+  },
   mounted() {
-    // Set the default image on mount
-    this.displayImage(require('@/assets/images/picun-headphones.jpg'), 0);
+    this.fetchProductDetails();
   },
   methods: {
-    displayImage(imageSrc, index) {
+    async fetchProductDetails() {
+      const productId = this.$route.params.id;
+      const productUrl = `http://127.0.0.1:8000/api/products/${productId}/`;
+      try {
+        const response = await axios.get(productUrl);
+        this.product = response.data;
+      } catch (error) {
+        console.error('Error fetching product details:', error);
+      }
+    },
+    displayImage(image, index) {
       const cartImage = document.getElementById('cartimage');
-      cartImage.src = imageSrc;
+      cartImage.src = image;
 
-      // Remove 'active' class from all img-boxes
       const imgBoxes = document.querySelectorAll('.img-box');
       imgBoxes.forEach((box) => box.classList.remove('active'));
 
-      // Add 'active' class to the current img-box
       imgBoxes[index].classList.add('active');
     },
 

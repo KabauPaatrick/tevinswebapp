@@ -1,5 +1,8 @@
 import os
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Define the base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -59,18 +62,28 @@ INSTALLED_APPS = [
     'testimonials',
     'license',
     'users',
-    'logo',
+    # 'logo',
     'product',
      'cloudinary',
     'cloudinary_storage',
+    'category',
+    'brands',
+    'colors',
+    'Enquiry',
+    'payments',
+    'FileUpload'
+
 ]
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dkekd92kz',
     'API_KEY': '187641184772337',
     'API_SECRET': '8Hwz-YRED2DXRsspD_wzNDO67OI',
 }
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-CLOUDINARY_URL = 'cloudinary://87641184772337:8Hwz-YRED2DXRsspD_wzNDO67OI@dkekd92kz'
+
+CLOUDINARY_URL = 'cloudinary://187641184772337:8Hwz-YRED2DXRsspD_wzNDO67OI@dkekd92kz'
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -113,7 +126,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'disiweb',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'Pato@254',
         'HOST': 'localhost',
         'PORT': '3306',
         # 'OPTIONS': {
@@ -139,6 +152,23 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'level': 'DEBUG',
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['console'],
+#             'level': 'DEBUG',
+#             'propagate': True,
+#         },
+#     },
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -164,15 +194,21 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
-    )
+    ),
+     'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.MultiPartParser',
+        'rest_framework.parsers.FormParser',
+    ),
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.async.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'kabaupaatrick@gmail.com'  # Your email address
-EMAIL_HOST_PASSWORD = 'pwci uumf rbhj vjdg'  # Your email password or app password
+EMAIL_HOST_PASSWORD = 'pwci uumf rbhj vjdg'  # email pass 
+DEBUG_EMAIL = True
 
 
 AUTH_USER_MODEL = 'users.User'

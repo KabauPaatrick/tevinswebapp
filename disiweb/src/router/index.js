@@ -96,7 +96,7 @@ const routes = [
     component: CartPage
   },
   {
-    path: '/cart',
+    path: '/cart/:id',
     name: 'Itempage',
     component: ItemPage
   },

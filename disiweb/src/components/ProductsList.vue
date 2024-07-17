@@ -35,23 +35,11 @@
       <div class="dot" :class="{ active: currentMarque === 'pink' }" @click="showMarque('pink')"></div>
     </div>
     <div class="products">
-      <div class="product1">
-        <img src="@/assets/images/towelproduct.jpg" alt="" id="product-image">
-        <h1>Utopia Towels 2 Pack Premium Bath Towels Set, (27 x 54 Inches) 100% Ring Spun Cotton 600GSM, Lightweight and Highly Absorbent Quick Drying Towels, Perfect for Daily Use</h1>
-        <h5>$99.99</h5>
-        <button id="go" @click="gotoproduct">View Item</button>
-      </div>
-      <div class="product1">
-        <img src="@/assets/images/headphones.png" alt="" id="product-image">
-        <h1>Item 1</h1>
-        <h5>$100</h5>
-        <button id="go" @click="gotoproduct">View Item</button>
-      </div>
-      <div class="product1">
-        <img src="@/assets/images/towelproduct.jpg" alt="" id="product-image">
-        <h1>Item 1</h1>
-        <h5>$100</h5>
-        <button id="go" @click="gotoproduct">View Item</button>
+      <div v-for="product in products" :key="product.id" class="product1">
+        <img :src="product.image" alt="" id="product-image">
+        <h1>{{ product.title }}</h1>
+        <h5>Ksh{{ product.price }}</h5>
+        <button id="go" @click="gotoProduct(product.id)">View Item</button>
       </div>
     </div>
   </body>
@@ -65,12 +53,29 @@ export default {
       currentMarque: 'yellow',
       marqueOrder: ['yellow', 'grey', 'pink'],
       marqueIndex: 0,
-      intervalId: null
+      intervalId: null,
+      products: [] 
     };
   },
   methods: {
-    gotoproduct() {
-      this.$router.push('/cart');
+    async fetchProducts() {
+      try {
+       
+        const response = await fetch('http://127.0.0.1:8000/api/products/');
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        const data = await response.json();
+        this.products = data; // Assign fetched products to component data
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    },
+
+    gotoProduct(productId) {
+      this.$router.push(`/cart/${productId}`);
+      // this.$router.push('/cart')
+
     },
     showMarque(marque) {
       this.currentMarque = marque;
@@ -88,6 +93,7 @@ export default {
     }
   },
   mounted() {
+    this.fetchProducts();
     this.startAutoSwitch();
   },
   beforeUnmount() {
