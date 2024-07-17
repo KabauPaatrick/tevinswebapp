@@ -16,6 +16,9 @@ import CartPage from '@/views/CartPage.vue';
 import ItemPage from '@/views/ItemPage.vue';
 import ProductsPage from '@/views/ProductsPage.vue';
 import OrdersPage from '@/views/OrdersPage.vue';
+import AddtoCartPage from '@/views/AddtoCartPage.vue';
+import AdminProductPage from '@/views/AdminProductPage.vue';
+import EditProductPage from '@/views/EditProductPage.vue';
 const routes = [
   {
     path: '/',
@@ -106,6 +109,21 @@ const routes = [
     path: '/orders',
     name: 'OrdersPage',
     component: OrdersPage
+  },
+  {
+    path: '/addtocart',
+    name: 'AddtoCartPage',
+    component: AddtoCartPage
+  },
+  {
+    path: '/adminproductpage',
+    name: 'AdminProductPage',
+    component: AdminProductPage
+  },
+  {
+    path: '/editproductpage',
+    name: 'EditProductPage',
+    component: EditProductPage
   },
 ];
 

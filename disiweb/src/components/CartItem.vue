@@ -50,7 +50,7 @@
           <h5 id="quantity">Quantity</h5>
           <input type="number" placeholder="1">
         </div>
-        <button id="addtocart"><span class="material-symbols-outlined cart-icon">shopping_cart</span>Add to Cart</button>
+        <button id="go" @click="addtocart"><span class="material-symbols-outlined cart-icon">shopping_cart</span>Add to Cart</button>
       </div>
 
       <div class="more-details">
@@ -140,7 +140,11 @@ export default {
 
       // Add 'active' class to the current img-box
       imgBoxes[index].classList.add('active');
-    }
+    },
+
+    addtocart() {
+      this.$router.push('/addtocart');
+    },
   }
 };
 </script>
@@ -309,6 +313,40 @@ button {
   border-radius: 10px;
   background: #f2630d;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button span:after {
+  content: "»";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+}
+
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+button span:after {
+  content: "»";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+}
+
+button:hover span {
+  padding-right: 15px;
+}
+
+button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 button:hover{
