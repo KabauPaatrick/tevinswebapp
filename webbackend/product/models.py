@@ -31,7 +31,7 @@ class Product(models.Model):
     sold = models.IntegerField(default=0)
     colors = models.ManyToManyField(Color)
     image = models.ImageField(upload_to='media/products_images/')
-    tags = models.JSONField(default=list)
+    tags = models.JSONField(default=list,null=True)
     total_ratings = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
     ratings = models.JSONField(default=list)
     created_at = models.DateTimeField(default=timezone.now)  # Set default to current time
