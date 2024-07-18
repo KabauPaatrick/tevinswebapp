@@ -8,9 +8,9 @@
         <!-- Loop through products fetched from API -->
         <div v-for="product in products" :key="product.id" class="my-product1">
           <img :src="product.image" alt="" id="my-product-image">
-          <h1>{{ product.title}}</h1>
+          <h1>{{ product.title }}</h1>
           <h5>{{ '$' + product.price }}</h5>
-          <button id="edit" @click="editProduct(product.id)"><span class="material-symbols-outlined edit-icon">edit</span>Edit</button>
+          <button id="edit" @click="gotoProduct(product.id)"><span class="material-symbols-outlined edit-icon">edit</span>Edit</button>
           <button id="delete" @click="confirmDelete(product)"><span class="material-symbols-outlined delete-icon">delete</span>Delete</button>
         </div>
       </div>
@@ -45,7 +45,6 @@ export default {
   methods: {
     async fetchProducts() {
       try {
-       
         const response = await fetch('http://127.0.0.1:8000/api/products/');
         if (!response.ok) {
           throw new Error('Failed to fetch products');
@@ -56,20 +55,18 @@ export default {
         console.error('Error fetching products:', error);
       }
     },
-    editProduct(productId) {
-      // Navigate to edit product page with product ID
-      this.$router.push(`/editproductpage/${productId}`);
+    gotoProduct(productId) {
+      this.$router.push(`/editproduct/${productId}`);
     },
     confirmDelete(product) {
       this.showPopup = true;
       this.itemToDelete = product;
     },
     deleteItem() {
-     
       if (this.itemToDelete) {
         const productId = this.itemToDelete.id;
-        //  send DELETE request to API
-        fetch(`http://127.0.0.1/api/products/${productId}`, {
+        // send DELETE request to API
+        fetch(`http://127.0.0.1:8000/api/products/${productId}`, {
           method: 'DELETE'
         })
         .then(response => {
@@ -96,6 +93,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+/* Your existing styles */
+</style>
+
 
   
   <style scoped>

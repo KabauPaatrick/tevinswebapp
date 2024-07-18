@@ -128,7 +128,7 @@ const routes = [
     component: AdminProductPage
   },
   {
-    path: '/editproductpage',
+    path: '/editproduct/:id',
     name: 'EditProductPage',
     component: EditProductPage
   },
