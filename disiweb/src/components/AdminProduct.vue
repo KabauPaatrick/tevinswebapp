@@ -1,75 +1,102 @@
 <template>
-    <div class="admin-products">
-      <div class="products-body">
-        <h1>YOUR PRODUCTS</h1>
-        <hr class="solid">
-  
-        <div class="my-products">
-          <div class="my-product1">
-            <img src="@/assets/images/towelproduct.jpg" alt="" id="my-product-image">
-            <h1>Utopia Towels 2 Pack Premium Bath Towels Set, (27 x 54 Inches) 100% Ring Spun Cotton 600GSM, Lightweight and Highly Absorbent Quick Drying Towels, Perfect for Daily Use</h1>
-            <h5>$99.99</h5>
-            <button id="edit" @click="editproduct"><span class="material-symbols-outlined edit-icon">edit</span>Edit</button>
-            <button id="delete" @click="confirmDelete"><span class="material-symbols-outlined delete-icon">delete</span>Delete</button>
-          </div>
-          <div class="my-product1">
-            <img src="@/assets/images/headphones.png" alt="" id="my-product-image">
-            <h1>Item 1</h1>
-            <h5>$100</h5>
-            <button id="edit" @click="editproduct"><span class="material-symbols-outlined edit-icon">edit</span>Edit</button>
-            <button id="delete" @click="confirmDelete"><span class="material-symbols-outlined delete-icon">delete</span>Delete</button>
-          </div>
-          <div class="my-product1">
-            <img src="@/assets/images/towelproduct.jpg" alt="" id="my-product-image">
-            <h1>Item 1</h1>
-            <h5>$100</h5>
-            <button id="edit" @click="editproduct"><span class="material-symbols-outlined edit-icon">edit</span>Edit</button>
-            <button id="delete" @click="confirmDelete"><span class="material-symbols-outlined delete-icon">delete</span>Delete</button>
-          </div>
-        </div>
-      </div>
-  
-      <div v-if="showPopup" class="popup">
-        <div class="popup-content">
-          <h5>Are you sure you want to delete this item? The item will be permanently deleted.</h5>
-          <div class="confirm-buttons">
-              <button id="yes" @click="deleteItem">Yes</button>
-              <button id="no" @click="cancelDelete">No</button>
-          </div>
+  <div class="admin-products">
+    <div class="products-body">
+      <h1>YOUR PRODUCTS</h1>
+      <hr class="solid">
+
+      <div class="my-products">
+        <!-- Loop through products fetched from API -->
+        <div v-for="product in products" :key="product.id" class="my-product1">
+          <img :src="product.image" alt="" id="my-product-image">
+          <h1>{{ product.title}}</h1>
+          <h5>{{ '$' + product.price }}</h5>
+          <button id="edit" @click="editProduct(product.id)"><span class="material-symbols-outlined edit-icon">edit</span>Edit</button>
+          <button id="delete" @click="confirmDelete(product)"><span class="material-symbols-outlined delete-icon">delete</span>Delete</button>
         </div>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'A-ProductsPage',
-    data() {
-      return {
-        showPopup: false,
-        itemToDelete: null
-      };
+
+    <div v-if="showPopup" class="popup">
+      <div class="popup-content">
+        <h5>Are you sure you want to delete this item? The item will be permanently deleted.</h5>
+        <div class="confirm-buttons">
+            <button id="yes" @click="deleteItem">Yes</button>
+            <button id="no" @click="cancelDelete">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'A-ProductsPage',
+  data() {
+    return {
+      showPopup: false,
+      itemToDelete: null,
+      products: []  
+    };
+  },
+  mounted() {
+    // Fetch products when component is mounted
+    this.fetchProducts();
+  },
+  methods: {
+    async fetchProducts() {
+      try {
+       
+        const response = await fetch('http://127.0.0.1:8000/api/products/');
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        const data = await response.json();
+        this.products = data; // Assign fetched products to component data
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
     },
-    methods: {
-      editproduct() {
-        this.$router.push('/editproductpage');
-      },
-      confirmDelete(item) {
-        this.showPopup = true;
-        this.itemToDelete = item;
-      },
-      deleteItem() {
-        // Perform delete action here
-        this.showPopup = false;
-        this.itemToDelete = null;
-      },
-      cancelDelete() {
+    editProduct(productId) {
+      // Navigate to edit product page with product ID
+      this.$router.push(`/editproductpage/${productId}`);
+    },
+    confirmDelete(product) {
+      this.showPopup = true;
+      this.itemToDelete = product;
+    },
+    deleteItem() {
+     
+      if (this.itemToDelete) {
+        const productId = this.itemToDelete.id;
+        //  send DELETE request to API
+        fetch(`http://127.0.0.1/api/products/${productId}`, {
+          method: 'DELETE'
+        })
+        .then(response => {
+          if (response.ok) {
+            console.log('Product deleted successfully.');
+            // Update UI or fetch products again to reflect deletion
+            this.fetchProducts();
+          } else {
+            console.error('Failed to delete product:', response.statusText);
+          }
+        })
+        .catch(error => {
+          console.error('Error deleting product:', error);
+        });
+
         this.showPopup = false;
         this.itemToDelete = null;
       }
+    },
+    cancelDelete() {
+      this.showPopup = false;
+      this.itemToDelete = null;
     }
-  };
-  </script>
+  }
+};
+</script>
+
   
   <style scoped>
   .admin-products {

@@ -126,7 +126,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'disiweb',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'Pato@254',
         'HOST': 'localhost',
         'PORT': '3306',
         # 'OPTIONS': {

@@ -19,6 +19,7 @@ import OrdersPage from '@/views/OrdersPage.vue';
 import AddtoCartPage from '@/views/AddtoCartPage.vue';
 import AdminProductPage from '@/views/AdminProductPage.vue';
 import EditProductPage from '@/views/EditProductPage.vue';
+import AddProduct from '@/views/AddProduct.vue';
 const routes = [
   {
     path: '/',
@@ -101,10 +102,16 @@ const routes = [
     component: ItemPage
   },
   {
+    path: '/addproduct',
+    name: 'AddProduct',
+    component: AddProduct
+  },
+  {
     path: '/products',
     name: 'ProductPage',
     component: ProductsPage
   },
+
   {
     path: '/orders',
     name: 'OrdersPage',

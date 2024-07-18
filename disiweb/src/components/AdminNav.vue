@@ -52,6 +52,11 @@
           </router-link>
         </li>
         <li>
+          <router-link :to="{name: 'AddProduct'}">
+            <span class="material-symbols-outlined">Add</span>AddProduct
+          </router-link>
+        </li>
+        <li>
           <router-link :to="{name: 'AdminProductPage'}">
             <span class="material-symbols-outlined">shopping_bag</span>Products
           </router-link>
