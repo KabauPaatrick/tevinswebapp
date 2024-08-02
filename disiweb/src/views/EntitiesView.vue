@@ -2,129 +2,83 @@
   <div>
     <AdminNav />
     <div class="container mt-5">
-      <!-- Product Form -->
+      <!-- New Form -->
       <div class="card mb-4">
         <div class="card-header">
-          <h2 class="mb-0">Create New Product</h2>
+          <h2 class="mb-0">Create New Entity</h2>
         </div>
         <div class="card-body">
-          <form @submit.prevent="createProduct" class="form">
+          <form @submit.prevent="createEntry" class="form">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="title" class="form-label">Title:</label>
-                  <input type="text" id="title" v-model="product.title" class="form-control" required>
+                  <label for="name" class="form-label">Name:</label>
+                  <input type="text" id="name" v-model="entity.name" class="form-control" required>
                 </div>
                 <div class="form-group">
                   <label for="description" class="form-label">Description:</label>
-                  <textarea id="description" v-model="product.description" class="form-control" required></textarea>
+                  <textarea id="description" v-model="entity.description" class="form-control" required></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="slug" class="form-label">Slug:</label>
-                  <input type="text" id="slug" v-model="product.slug" class="form-control" required>
+                  <label for="location" class="form-label">Location:</label>
+                  <input type="text" id="location" v-model="entity.location" class="form-control" required>
                 </div>
                 <div class="form-group">
-                  <label for="price" class="form-label">Price:</label>
-                  <input type="number" id="price" v-model="product.price" step="0.01" class="form-control" required>
+                  <label for="contactPerson" class="form-label">Contact Person:</label>
+                  <input type="text" id="contactPerson" v-model="entity.contactPerson" class="form-control" required>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="category" class="form-label">Category:</label>
-                  <select id="category" v-model="product.category" class="form-control" required>
-                    <option v-for="category in categories" :key="category.id" :value="category.id">
-                      {{ category.name }}
-                    </option>
-                  </select>
+                  <label for="email" class="form-label">Email:</label>
+                  <input type="email" id="email" v-model="entity.email" class="form-control" required>
                 </div>
                 <div class="form-group">
-                  <label for="brand" class="form-label">Brand:</label>
-                  <select id="brand" v-model="product.brand" class="form-control" required>
-                    <option v-for="brand in brands" :key="brand.id" :value="brand.id">
-                      {{ brand.title }}
-                    </option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="quantity" class="form-label">Quantity:</label>
-                  <input type="number" id="quantity" v-model="product.quantity" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="colors" class="form-label">Colors:</label>
-                  <select id="colors" v-model="product.colors" class="form-control" multiple>
-                    <option v-for="color in colors" :key="color.id" :value="color.id">
-                      {{ color.title }}
-                    </option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="tags" class="form-label">Tags:</label>
-                  <input type="text" id="tags" v-model="tags" class="form-control" @input="updateTags">
-                </div>
-              </div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="image" class="form-label">Main Image:</label>
-                  <input type="file" id="image" @change="handleImageUpload" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="additionalImages" class="form-label">Additional Images:</label>
-                  <input type="file" id="additionalImages" @change="handleAdditionalImagesUpload" multiple class="form-control">
+                  <label for="phoneNumber" class="form-label">Phone Number:</label>
+                  <input type="text" id="phoneNumber" v-model="entity.phoneNumber" class="form-control" required>
                 </div>
               </div>
             </div>
             <div class="row mt-3">
               <div class="col-md-12 d-flex justify-content-between">
-                <button type="submit" class="btn btn-primary">Create Product</button>
-                <button type="button" class="btn btn-primary" @click="updateProduct(product)">Update</button>
+                <button type="submit" class="btn btn-primary">Create Entry</button>
+                <button type="button" class="btn btn-primary" @click="updateEntry(entity)">Update</button>
               </div>
             </div>
           </form>
         </div>
       </div>
 
-      <!-- Product Table -->
+      <!-- Entry Table -->
       <div class="card">
         <div class="card-header">
-          <h2 class="mb-0">Product List</h2>
+          <h2 class="mb-0">Entry List</h2>
         </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Image</th>
-                  <th>Title</th>
+                  <th>Name</th>
                   <th>Description</th>
-                  <th>Slug</th>
-                  <th>Price</th>
-                  <th>Category</th>
-                  <th>Brand</th>
-                  <th>Quantity</th>
-                  <th>Colors</th>
-                  <th>Tags</th>
+                  <th>Location</th>
+                  <th>Contact Person</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(product, index) in paginatedProducts" :key="index">
-                  <td>
-                    <img :src="product.image" alt="Product Image" style="width: 100px; height: auto;">
-                  </td>
-                  <td>{{ product.title }}</td>
-                  <td>{{ product.description }}</td>
-                  <td>{{ product.slug }}</td>
-                  <td>{{ product.price }}</td>
-                  <td>{{ getCategoryName(product.category) }}</td>
-                  <td>{{ getBrandName(product.brand) }}</td>
-                  <td>{{ product.quantity }}</td>
-                  <td>{{ getColorNames(product.colors) }}</td>
-                  <td>{{ product.tags ? product.tags.join(', ') : '' }}</td>
+                <tr v-for="(entity, index) in paginatedEntries" :key="index">
+                  <td>{{ entity.name }}</td>
+                  <td>{{ entity.description }}</td>
+                  <td>{{ entity.location }}</td>
+                  <td>{{ entity.contactPerson }}</td>
+                  <td>{{ entity.email }}</td>
+                  <td>{{ entity.phoneNumber }}</td>
                   <td class="d-flex">
-                    <button @click="deleteProduct(product.id)" class="btn btn-danger mr-2">Delete</button>
-                    <button @click="updateProductForm(product)" class="btn btn-primary">Update</button>
+                    <button @click="deleteEntry(entity.id)" class="btn btn-danger mr-2">Delete</button>
+                    <button @click="updateEntryForm(entity)" class="btn btn-primary">Update</button>
                   </td>
                 </tr>
               </tbody>
@@ -161,38 +115,28 @@ export default {
     AdminNav,
   },
   setup() {
-    const product = reactive({
+    const entity = reactive({
       id: '',
-      title: '',
+      name: '',
       description: '',
-      slug: '',
-      price: '',
-      category: '',
-      brand: '',
-      quantity: 0,
-      colors: [],
-      tags: [],
-      image: null,
-      images: []
+      location: '',
+      contactPerson: '',
+      email: '',
+      phoneNumber: ''
     });
 
-    const products = ref([]);
-    const categories = ref([]);
-    const brands = ref([]);
-    const colors = ref([]);
-    const tags = ref('');
-
+    const entries = ref([]);
     const currentPage = ref(1);
     const itemsPerPage = 10;
 
-    const paginatedProducts = computed(() => {
+    const paginatedEntries = computed(() => {
       const start = (currentPage.value - 1) * itemsPerPage;
       const end = start + itemsPerPage;
-      return products.value.slice(start, end);
+      return entries.value.slice(start, end);
     });
 
     const totalPages = computed(() => {
-      return Math.ceil(products.value.length / itemsPerPage);
+      return Math.ceil(entries.value.length / itemsPerPage);
     });
 
     const changePage = (page) => {
@@ -201,151 +145,63 @@ export default {
       }
     };
 
-    const fetchOptions = async () => {
+    const createEntry = async () => {
       try {
-        const [categoriesRes, brandsRes, colorsRes] = await Promise.all([
-          axios.get('http://127.0.0.1:8000/api/category/list/'),
-          axios.get('http://127.0.0.1:8000/api/brand/show/'),
-          axios.get('http://127.0.0.1:8000/api/color/show/')
-        ]);
-
-        categories.value = categoriesRes.data;
-        brands.value = brandsRes.data;
-        colors.value = colorsRes.data;
+        const response = await axios.post('https://kabau.pythonanywhere.com/api/entity/create/', entity);
+        console.log('Entry created successfully:', response.data);
+        fetchEntries(); // Fetch and update the entity list
       } catch (error) {
-        console.error('Error fetching options:', error);
+        console.error('Error creating entity:', error);
       }
     };
 
-    const handleImageUpload = (event) => {
-      product.image = URL.createObjectURL(event.target.files[0]);
-    };
-
-    const handleAdditionalImagesUpload = (event) => {
-      product.images = Array.from(event.target.files).map(file => URL.createObjectURL(file));
-    };
-
-    const updateTags = (event) => {
-      product.tags = event.target.value.split(',').map(tag => tag.trim());
-    };
-
-    const createProduct = async () => {
-      const formData = new FormData();
-      for (const key in product) {
-        if (key === 'images') {
-          product.images.forEach((image, index) => {
-            formData.append(`image_files[${index}]`, image);
-          });
-        } else {
-          formData.append(key, product[key]);
-        }
-      }
-
+    const fetchEntries = async () => {
       try {
-        const response = await axios.post('http://127.0.0.1:8000/api/products/create/', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-        console.log('Product created successfully:', response.data);
-        fetchProducts(); // Fetch and update the product list
+        const response = await axios.get('https://kabau.pythonanywhere.com/api/entity/show/');
+        entries.value = response.data;
       } catch (error) {
-        console.error('Error creating product:', error);
+        console.error('Error fetching entries:', error);
       }
     };
 
-    const fetchProducts = async () => {
+    const deleteEntry = async (entryId) => {
       try {
-        const response = await axios.get('https://kabau.pythonanywhere.com/api/products/');
-        products.value = response.data;
+        await axios.delete(`https://kabau.pythonanywhere.com/api/entity/${entryId}/`);
+        fetchEntries(); // Refresh entries after deletion
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error('Error deleting entity:', error);
       }
     };
 
-    const deleteProduct = async (productId) => {
-      try {
-        await axios.delete(`https://kabau.pythonanywhere.com/api/products/${productId}/`);
-        fetchProducts(); // Refresh products after deletion
-      } catch (error) {
-        console.error('Error deleting product:', error);
-      }
+    const updateEntryForm = (entryData) => {
+      Object.assign(entity, entryData);
     };
 
-    const updateProductForm = (productData) => {
-      Object.assign(product, productData);
-      tags.value = product.tags.join(', ');
-    };
-
-    const updateProduct = async (productData) => {
+    const updateEntry = async (entryData) => {
       try {
-        if (!productData.id) {
-          console.error('productData is undefined or does not have an id');
+        if (!entryData.id) {
+          console.error('entryData is undefined or does not have an id');
           return;
         }
 
-        const formData = new FormData();
-        for (const key in product) {
-          if (key === 'images') {
-            product.images.forEach((image, index) => {
-              formData.append(`image_files[${index}]`, image);
-            });
-          } else {
-            formData.append(key, product[key]);
-          }
-        }
-
-        const response = await axios.put(`https://kabau.pythonanywhere.com/api/products/${productData.id}/update/`, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-        console.log('Product updated successfully:', response.data);
-        fetchProducts(); // Fetch updated products
+        const response = await axios.put(`https://kabau.pythonanywhere.com/api/entity/${entryData.id}/update/`, entity);
+        console.log('Entry updated successfully:', response.data);
+        fetchEntries(); // Fetch updated entries
       } catch (error) {
-        console.error('Error updating product:', error);
+        console.error('Error updating entity:', error);
       }
     };
 
-    const getCategoryName = (categoryId) => {
-      const category = categories.value.find((cat) => cat.id === categoryId);
-      return category ? category.name : '';
-    };
-
-    const getBrandName = (brandId) => {
-      const brand = brands.value.find((br) => br.id === brandId);
-      return brand ? brand.name : '';
-    };
-
-    const getColorNames = (colorIds) => {
-      const colorNames = colorIds.map((colorId) => {
-        const color = colors.value.find((col) => col.id === colorId);
-        return color ? color.name : '';
-      });
-      return colorNames.join(', ');
-    };
-
-    fetchOptions();
-    fetchProducts();
+    fetchEntries();
 
     return {
-      product,
-      products,
-      categories,
-      brands,
-      colors,
-      tags,
-      handleImageUpload,
-      handleAdditionalImagesUpload,
-      updateTags,
-      createProduct,
-      deleteProduct,
-      updateProductForm,
-      updateProduct,
-      getCategoryName,
-      getBrandName,
-      getColorNames,
-      paginatedProducts,
+      entity,
+      entries,
+      createEntry,
+      deleteEntry,
+      updateEntryForm,
+      updateEntry,
+      paginatedEntries,
       currentPage,
       totalPages,
       changePage
@@ -373,10 +229,5 @@ export default {
 
 .btn {
   margin-right: 10px;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
 }
 </style>
