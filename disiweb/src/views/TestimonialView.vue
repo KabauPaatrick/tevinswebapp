@@ -122,7 +122,7 @@
       const fetchEntities = async () => {
         try {
           if (!entitiesFetched.value) {
-            const response = await axios.get('http://127.0.0.1:8000/api/entity/show/');
+            const response = await axios.get('https://kabau.pythonanywhere.com/api/entity/show/');
             entities.value = response.data;
             entitiesFetched.value = true;
           }
@@ -133,7 +133,7 @@
   
       const fetchTestimonials = async () => {
         try {
-          const response = await axios.get('http://127.0.0.1:8000/api/testimonials/show/');
+          const response = await axios.get('https://kabau.pythonanywhere.com/api/testimonials/show/');
           testimonials.value = response.data;
         } catch (error) {
           console.error('Error fetching testimonials:', error);
@@ -150,7 +150,7 @@
           formData.append('testimonial_image', testimonial.testimonialImage);
           formData.append('entity', testimonial.entity);
   
-          const response = await axios.post('http://127.0.0.1:8000/api/testimonials/create/', formData, {
+          const response = await axios.post('https://kabau.pythonanywhere.com/api/testimonials/create/', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
@@ -172,7 +172,7 @@
   
       const deleteTestimonial = async (id) => {
         try {
-          await axios.delete(`http://127.0.0.1:8000/api/testimonials/${id}/delete`);
+          await axios.delete(`https://kabau.pythonanywhere.com/api/testimonials/${id}/delete`);
           fetchTestimonials();
         } catch (error) {
           console.error('Error deleting testimonial:', error);
@@ -210,7 +210,7 @@
         formData.append('entity', testimonial.entity);
 
         // Make PUT request to update testimonial
-        const response = await axios.put(`http://127.0.0.1:8000/api/testimonials/${selectedTestimonial.value.id}/update/`, formData, {
+        const response = await axios.put(`https://kabau.pythonanywhere.com/api/testimonials/${selectedTestimonial.value.id}/update/`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }

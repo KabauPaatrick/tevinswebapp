@@ -28,7 +28,7 @@ export default {
 
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/license/show/');
+                const response = await axios.get('https://kabau.pythonanywhere.com/api/license/show/');
                 const responseData = response.data;
 
                 if (responseData && responseData.length > 0) {

@@ -136,7 +136,7 @@
   
       const fetchEntities = async () => {
         try {
-          const response = await axios.get('http://127.0.0.1:8000/api/entity/show/');
+          const response = await axios.get('https://kabau.pythonanywhere.com/api/entity/show/');
           entities.value = response.data;
         } catch (error) {
           console.error('Error fetching entities:', error);
@@ -145,7 +145,7 @@
   
       const fetchSolutions = async () => {
         try {
-          const response = await axios.get('http://127.0.0.1:8000/api/solutions/show/');
+          const response = await axios.get('https://kabau.pythonanywhere.com/api/solutions/show/');
           solutions.value = response.data.map(solution => ({
             ...solution,
             createdAt: formatDate(solution.createdAt),
@@ -172,7 +172,7 @@
             formData.append('solution_image', solution.solution_image);
           }
   
-          const response = await axios.post('http://127.0.0.1:8000/api/solutions/create/', formData, {
+          const response = await axios.post('https://kabau.pythonanywhere.com/api/solutions/create/', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
@@ -193,7 +193,7 @@
   
       const deleteSolution = async (id) => {
         try {
-          await axios.delete(`http://127.0.0.1:8000/api/solutions/${id}/delete`);
+          await axios.delete(`https://kabau.pythonanywhere.com/api/solutions/${id}/delete`);
           fetchSolutions();
         } catch (error) {
           console.error('Error deleting solution:', error);
@@ -228,7 +228,7 @@
       formData.append('solution_image', solution.solution_image);
     }
 
-    const response = await axios.put(`http://127.0.0.1:8000/api/solutions/${id}/update/`, formData, {
+    const response = await axios.put(`https://kabau.pythonanywhere.com/api/solutions/${id}/update/`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

@@ -34,7 +34,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      api: 'http://127.0.0.1:8000/api/',
+      api: 'https://kabau.pythonanywhere.com/',
       fname: "",
       lname: "",
       phone: "",
@@ -82,7 +82,7 @@ export default {
       };
 
       try {
-        const response = await axios.post('http://127.0.0.1:8000/api/Clients/', formData);
+        const response = await axios.post('https://kabau.pythonanywhere.com/api/Clients/', formData);
         console.log(response.data);
 
         // Clear the form data after successful submission

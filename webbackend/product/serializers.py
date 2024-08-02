@@ -1,7 +1,6 @@
-# serializers.py
 from rest_framework import serializers
 from .models import Product, ProductImage
-from cloudinary.models import CloudinaryField
+import cloudinary.uploader
 
 class ProductImageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -44,7 +43,6 @@ class ProductSerializer(serializers.ModelSerializer):
 
         return product
 
-
     def update(self, instance, validated_data):
         image_files = validated_data.pop('image_files', [])
         tags = validated_data.pop('tags', None)  # Handle case where tags might be None
@@ -71,3 +69,12 @@ class ProductSerializer(serializers.ModelSerializer):
             ProductImage.objects.create(product=instance, file=image_file)
 
         return instance
+
+    def delete(self, instance):
+        # Delete images from Cloudinary
+        for image in instance.images.all():
+            cloudinary.uploader.destroy(image.public_id)
+            image.delete()
+
+        # Delete the product instance
+        instance.delete()

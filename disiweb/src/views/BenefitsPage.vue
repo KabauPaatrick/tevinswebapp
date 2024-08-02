@@ -32,7 +32,7 @@ export default {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/solutions/show/');
+        const response = await axios.get('https://kabau.pythonanywhere.com/solutions/show/');
         if (response.data && response.data.length > 0) {
           solutions.push(...response.data);
           console.log(response.data);

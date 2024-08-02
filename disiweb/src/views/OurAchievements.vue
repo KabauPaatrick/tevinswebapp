@@ -29,7 +29,7 @@ export default {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/achievement/show/');
+        const response = await axios.get('https://kabau.pythonanywhere.com/api/achievement/show/');
         if (response.data && response.data.length > 0) {
           achievements.value = response.data;
           console.log(achievements.value);

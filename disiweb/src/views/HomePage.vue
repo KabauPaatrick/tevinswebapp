@@ -112,7 +112,7 @@ export default {
         const fetchEntities = async () => {
             try {
                 if (!entitiesFetched.value) {
-                    const response = await axios.get('http://127.0.0.1:8000/api/entity/show/');
+                    const response = await axios.get('https://kabau.pythonanywhere.com/api/entity/show/');
                     entities.value = response.data;
                     entitiesFetched.value = true;
                 }
@@ -123,7 +123,7 @@ export default {
 
         const fetchHomeViews = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/homeview/show/');
+                const response = await axios.get('https://kabau.pythonanywhere.com/api/homeview/show/');
                 homeViews.value = response.data;
             } catch (error) {
                 console.error('Error fetching home views:', error);
@@ -132,7 +132,7 @@ export default {
 
         const deleteHomeView = async (id) => {
             try {
-                await axios.delete(`http://127.0.0.1:8000/api/homeview/${id}/delete/`);
+                await axios.delete(`https://kabau.pythonanywhere.com/api/homeview/${id}/delete/`);
                 fetchHomeViews();
             } catch (error) {
                 console.error('Error deleting home view:', error);
@@ -177,7 +177,7 @@ export default {
                 }
                 formData.append('entity', homeView.entity);
 
-                const response = await axios.put(`http://127.0.0.1:8000/api/homeview/${id}/update/`, formData, {
+                const response = await axios.put(`https://kabau.pythonanywhere.com/api/${id}/update/`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
@@ -203,7 +203,7 @@ export default {
                 }
                 formData.append('entity', homeView.entity);
 
-                const response = await axios.post('http://127.0.0.1:8000/api/homeview/create/', formData, {
+                const response = await axios.post('https://kabau.pythonanywhere.com/api/homeview/create/', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },

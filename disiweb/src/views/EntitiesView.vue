@@ -256,7 +256,7 @@ export default {
 
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/products/');
+        const response = await axios.get('https://kabau.pythonanywhere.com/api/products/');
         products.value = response.data;
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -265,7 +265,7 @@ export default {
 
     const deleteProduct = async (productId) => {
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/products/${productId}/`);
+        await axios.delete(`https://kabau.pythonanywhere.com/api/products/${productId}/`);
         fetchProducts(); // Refresh products after deletion
       } catch (error) {
         console.error('Error deleting product:', error);
@@ -295,7 +295,7 @@ export default {
           }
         }
 
-        const response = await axios.put(`http://127.0.0.1:8000/api/products/${productData.id}/update/`, formData, {
+        const response = await axios.put(`https://kabau.pythonanywhere.com/api/products/${productData.id}/update/`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }

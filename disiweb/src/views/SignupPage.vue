@@ -50,7 +50,7 @@ export default {
 
     const register = async () => {
       try {
-        const response = await axios.post('http://127.0.0.1:8000/api/users/create/', userData);
+        const response = await axios.post('https://kabau.pythonanywhere.com/api/users/create/', userData);
 
         console.log('Successful Registration', response.data);
 

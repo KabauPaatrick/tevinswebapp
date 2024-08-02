@@ -138,7 +138,7 @@ export default {
 
     const fetchEntities = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/entity/show/');
+        const response = await axios.get('https://kabau.pythonanywhere.com/api/entity/show/');
         entities.value = response.data;
       } catch (error) {
         console.error('Error fetching entities:', error);
@@ -147,7 +147,7 @@ export default {
 
     const fetchLicense = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/license/show/');
+        const response = await axios.get('https://kabau.pythonanywhere.com/api/license/show/');
         licenses.value = response.data.map(license => ({
           ...license,
           createdAt: formatDate(license.created_at),
@@ -173,7 +173,7 @@ export default {
           formData.append('license_images', license.licenseImage);
         }
 
-        const response = await axios.post('http://127.0.0.1:8000/api/license/create/', formData, {
+        const response = await axios.post('https://kabau.pythonanywhere.com/api/license/create/', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -194,7 +194,7 @@ export default {
 
     const deleteLicense = async (id) => {
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/license/${id}/delete`);
+        await axios.delete(`https://kabau.pythonanywhere.com/api/license/${id}/delete`);
         fetchLicense();
       } catch (error) {
         console.error('Error deleting license:', error);
@@ -227,7 +227,7 @@ export default {
           formData.append('license_images', license.licenseImage);
         }
 
-        const response = await axios.put(`http://127.0.0.1:8000/api/license/${id}/update/`, formData, {
+        const response = await axios.put(`https://kabau.pythonanywhere.com/api/license/${id}/update/`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }

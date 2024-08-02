@@ -43,7 +43,7 @@ export default {
 
     const login = async () => {
       try {
-        const response = await axios.post('http://127.0.0.1:8000/api/login/', loginData);
+        const response = await axios.post('https://kabau.pythonanywhere.com/api/login/', loginData);
 
         localStorage.setItem('app_token', response.data.token);
 

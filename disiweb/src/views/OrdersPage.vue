@@ -85,7 +85,7 @@ export default {
 
         const fetchCustomers = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/customer/show/');
+                const response = await axios.get('https://kabau.pythonanywhere.com/api/customer/show/');
                 customers.splice(0, customers.length, ...response.data);
             } catch (error) {
                 console.error('Error fetching customers:', error);
@@ -96,7 +96,7 @@ export default {
             try {
                 customer.createdAt = customer.createdAt.toString();
                 customer.updatedAt = customer.updatedAt.toString();
-                const response = await axios.post('http://127.0.0.1:8000/api/customer/create/', customer);
+                const response = await axios.post('https://kabau.pythonanywhere.com/api/customer/create/', customer);
                 console.log(response.data);
                 Object.keys(customer).forEach(key => {
                     customer[key] = '';
@@ -109,7 +109,7 @@ export default {
 
         const deleteCustomer = async (customerId) => {
             try {
-                const response = await axios.delete(`http://127.0.0.1:8000/api/customer/${customerId}/delete`);
+                const response = await axios.delete(`https://kabau.pythonanywhere.com/api/customer/${customerId}/delete`);
                 console.log(response.data);
                 await fetchCustomers();
             } catch (error) {
@@ -139,7 +139,7 @@ export default {
                     console.error('Customer ID is undefined');
                     return;
                 }
-                const response = await axios.put(`http://127.0.0.1:8000/api/customer/${customer.id}/update/`, customer);
+                const response = await axios.put(`https://kabau.pythonanywhere.com/api/customer/${customer.id}/update/`, customer);
                 console.log(response.data);
                 Object.keys(customer).forEach(key => {
                     customer[key] = '';

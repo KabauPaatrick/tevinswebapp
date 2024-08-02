@@ -72,7 +72,7 @@ export default {
                     }
                 };
 
-                const response = await axios.post('http://edms-enpoints.bitz-itc.com/api/folder/documents/upload', formData, config);
+                const response = await axios.post('https://kabau.pythonanywhere.com/api/folder/documents/upload', formData, config);
                 console.log(response.data);
                 // Clear form fields after successful submission
                 document.folder_id = '';

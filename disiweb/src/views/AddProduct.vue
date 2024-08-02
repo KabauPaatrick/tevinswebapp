@@ -204,9 +204,9 @@ export default {
     const fetchOptions = async () => {
       try {
         const [categoriesRes, brandsRes, colorsRes] = await Promise.all([
-          axios.get('http://127.0.0.1:8000/api/category/list/'),
-          axios.get('http://127.0.0.1:8000/api/brand/show/'),
-          axios.get('http://127.0.0.1:8000/api/color/show/')
+          axios.get('https://kabau.pythonanywhere.com/api/category/list/'),
+          axios.get('https://kabau.pythonanywhere.com/api/brand/show/'),
+          axios.get('https://kabau.pythonanywhere.com/api/color/show/')
         ]);
 
         categories.value = categoriesRes.data;
@@ -247,7 +247,7 @@ export default {
           formData.append(`images[${index}]`, image); // Multiple images
         });
 
-        const response = await axios.post('http://127.0.0.1:8000/api/products/create/', formData, {
+        const response = await axios.post('https://kabau.pythonanywhere.com/api/products/create/', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -263,7 +263,7 @@ export default {
 
     const deleteProduct = async (id) => {
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/products/delete/${id}/`);
+        await axios.delete(`https://kabau.pythonanywhere.com/api/products/${id}/delete/`);
         products.value = products.value.filter(product => product.id !== id);
       } catch (error) {
         console.error('Error deleting product:', error);
@@ -304,7 +304,7 @@ export default {
           formData.append(`images[${index}]`, image); // Append new additional images
         });
 
-        const response = await axios.put(`http://127.0.0.1:8000/api/products/update/${product.id}/`, formData, {
+        const response = await axios.put(`https://kabau.pythonanywhere.com/api/products/update/${product.id}/`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -355,7 +355,7 @@ export default {
 
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/products/list/');
+        const response = await axios.get('https://kabau.pythonanywhere.com/api/products/list/');
         products.value = response.data;
       } catch (error) {
         console.error('Error fetching products:', error);

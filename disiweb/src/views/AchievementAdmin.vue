@@ -198,7 +198,7 @@ export default {
 
         const fetchEntities = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/entity/show/');
+                const response = await axios.get('https://kabau.pythonanywhere.com/entity/show/');
                 entities.value = response.data;
             } catch (error) {
                 console.error('Error fetching entities:', error);
@@ -207,7 +207,7 @@ export default {
 
         const fetchCustomers = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/customer/show/');
+                const response = await axios.get('https://kabau.pythonanywhere.com/customer/show/');
                 customers.value = response.data;
             } catch (error) {
                 console.error('Error fetching customers:', error);
@@ -220,7 +220,7 @@ export default {
 
         const fetchAchievements = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/achievement/show');
+                const response = await axios.get('https://kabau.pythonanywhere.com/achievement/show');
                 achievements.value = response.data;
             } catch (error) {
                 console.error('Error fetching achievements:', error);
@@ -244,7 +244,7 @@ export default {
         formData.append('customer', achievement.customer);
         formData.append('achievement_image', achievement.achievement_image);
 
-        const response = await axios.post('http://127.0.0.1:8000/api/achievement/create/', formData, {
+        const response = await axios.post('https://kabau.pythonanywhere.com/achievement/create/', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data', // Set proper content type for formData
             }
@@ -260,7 +260,7 @@ export default {
 
         const deleteAchievement = async (id) => {
             try {
-                await axios.delete(`http://127.0.0.1:8000/api/achievement/${id}/delete`);
+                await axios.delete(`https://kabau.pythonanywhere.com/achievement/${id}/delete`);
                 fetchAchievements();
             } catch (error) {
                 console.error('Error deleting achievement:', error);
@@ -301,7 +301,7 @@ export default {
                 formData.append('customer', achievement.customer);
                 formData.append('achievement_image', achievement.achievement_image);
 
-                const response = await axios.put(`http://127.0.0.1:8000/api/achievement/${id}/update/`, formData, {
+                const response = await axios.put(`https://kabau.pythonanywhere.com/achievement/${id}/update/`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data', // Set proper content type for formData
                     }
