@@ -3,7 +3,7 @@
     <link rel="stylesheet" 
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <div class="nav-container">
-      <h1>E-Commerce</h1>
+      <h1>Byden Constructions Limited</h1>
       <div class="nav-items">
         <ul :class="{ 'open': isMenuOpen }">
           <router-link to="/">Home</router-link>
