@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                   <label for="contactPerson" class="form-label">Contact Person:</label>
-                  <input type="text" id="contactPerson" v-model="entity.contactPerson" class="form-control" required>
+                  <input type="text" id="contactPerson" v-model="entity.contact_person" class="form-control" required>
                 </div>
               </div>
               <div class="col-md-6">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group">
                   <label for="phoneNumber" class="form-label">Phone Number:</label>
-                  <input type="text" id="phoneNumber" v-model="entity.phoneNumber" class="form-control" required>
+                  <input type="text" id="phoneNumber" v-model="entity.phone_number" class="form-control" required>
                 </div>
               </div>
             </div>
@@ -73,9 +73,9 @@
                   <td>{{ entity.name }}</td>
                   <td>{{ entity.description }}</td>
                   <td>{{ entity.location }}</td>
-                  <td>{{ entity.contactPerson }}</td>
+                  <td>{{ entity.contact_person }}</td>
                   <td>{{ entity.email }}</td>
-                  <td>{{ entity.phoneNumber }}</td>
+                  <td>{{ entity.phone_number}}</td>
                   <td class="d-flex">
                     <button @click="deleteEntry(entity.id)" class="btn btn-danger mr-2">Delete</button>
                     <button @click="updateEntryForm(entity)" class="btn btn-primary">Update</button>
@@ -120,9 +120,9 @@ export default {
       name: '',
       description: '',
       location: '',
-      contactPerson: '',
+      contact_person: '',
       email: '',
-      phoneNumber: ''
+      phone_number: ''
     });
 
     const entries = ref([]);
