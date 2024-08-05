@@ -25,7 +25,7 @@ export default {
     // Fetch data from the Django API when the component is mounted
     onMounted(async () => {
       try {
-        const response = await fetch('https://kabau.pythonanywhere.com/apis/homeview/show/');
+        const response = await fetch('https://kabau.pythonanywhere.com/api/homeview/show/');
         const responseData = await response.json();
 
         if (responseData && responseData.length > 0) {
