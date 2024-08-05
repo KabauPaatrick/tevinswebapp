@@ -123,10 +123,10 @@ WSGI_APPLICATION = "webbackend.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        # 'ENGINE': 'django.db.backends.mysql',
         'NAME': 'disiweb',
         'USER': 'root',
-        'PASSWORD': 'Pato@254',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
         # 'OPTIONS': {

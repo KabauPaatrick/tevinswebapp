@@ -108,6 +108,16 @@ export default {
 }
 
 @media screen and (max-width: 600px) {
+  .contact__aside{
+    background: #007bff;
+    padding: 3rem;
+    border-radius: 1rem;
+    position: relative;
+    bottom: 10rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    color: white;
+  }
+
   .contact__form input[type="email"],
   .contact__form button {
     width: 100%;
