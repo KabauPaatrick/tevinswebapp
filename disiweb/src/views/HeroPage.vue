@@ -77,6 +77,7 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
+  min-width: 100vw; /* Maximum width of the hero section */
   height: 70vh;
   text-align: center;
   color: white; /* Adjust text color for better contrast */
