@@ -62,7 +62,7 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  background: rgba(106, 188, 226, 0.25);
+  background: rgba(54, 139, 179, 0.25);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   height: 550px;
@@ -83,7 +83,7 @@ export default {
   background-color: #000;
   transform: translateX(-50%);
   z-index: 1;
-  height: 100vh;
+  height: 100%;
 }
 
 .t-cards {

@@ -116,3 +116,12 @@ export default {
 };
 </script>
 
+<style scoped>
+*{
+  overflow: hidden;
+}
+
+.landing-page{
+  background: #cacbd5;
+}
+</style>
