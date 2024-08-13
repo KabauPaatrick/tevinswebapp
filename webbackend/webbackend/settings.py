@@ -71,7 +71,8 @@ INSTALLED_APPS = [
     'colors',
     'Enquiry',
     'payments',
-    'FileUpload'
+    'FileUpload',
+    'locations'
 
 ]
 CLOUDINARY_STORAGE = {
