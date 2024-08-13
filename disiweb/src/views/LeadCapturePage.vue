@@ -38,12 +38,12 @@ export default {
 }
 
 .Box {
-  background: rgba(106, 188, 226, 0.25);
+  background: rgba(54, 139, 179, 0.25);
   box-shadow: rgb(31 38 135, 0.37);
   backdrop-filter: blur(0px);
   padding: 4rem;
   display: grid;
-  grid-template-columns: 40% 40% 20%;
+  grid-template-columns: 40% 60%;
   gap: 4rem;
   height: 30rem;
   border-radius: 1rem;
@@ -61,7 +61,7 @@ export default {
 }
 
 #lead-image{
-  width: 200px;
+  max-width: 200px;
 }
 
 .contact__aside h2 {
@@ -107,15 +107,34 @@ export default {
   transform: scale(1.05);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 780px) {
+
+  .Box{
+    width: 90%;
+    gap: 10px;
+    padding: 10px;
+    height: 200px;
+  }
+
+  #lead-image {
+  max-width: 100%; /* Ensure the image doesn't exceed the width of its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+
   .contact__aside{
     background: #007bff;
-    padding: 3rem;
+    padding: 5px;
     border-radius: 1rem;
-    position: relative;
+    margin-top: 70px;
     bottom: 10rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     color: white;
+  }
+
+  .contact__form{
+    margin-left: auto;
+    margin-top: 50px;
   }
 
   .contact__form input[type="email"],

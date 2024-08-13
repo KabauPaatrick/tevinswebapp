@@ -65,6 +65,10 @@ export default {
 </script>
 
 <style scoped>
+*{
+  z-index: 1000;
+}
+
 nav {
   background: #d5d5d5;
   width: 100%;

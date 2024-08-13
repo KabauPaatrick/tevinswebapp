@@ -126,7 +126,7 @@ body {
   padding: 30px;
   border-radius: 10px;
   margin-bottom: 10px;
-  background: rgba(106, 188, 226, 0.25);
+  background: rgba(54, 139, 179, 0.25);
   box-shadow: rgb(31 38 135, 0.37);
   backdrop-filter: blur(0px);
   border-radius: 10px;

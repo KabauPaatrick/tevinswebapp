@@ -2,7 +2,7 @@
   <div>
     <AdminNav />
     <h1 class="text-center mb-4">Admin Dashboard</h1>
-    <div class="container mt-5" :class="{ 'sidebar-expanded': sidebarExpanded }">
+    <div class="container mt-5" >
       <div class="main-card">
         <div class="card-body">
           <div class="row">
@@ -122,20 +122,6 @@ export default {
   components: {
     AdminNav,
   },
-  data() {
-    return {
-      sidebarExpanded: false
-    };
-  },
-  mounted() {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.addEventListener('mouseenter', () => {
-      this.sidebarExpanded = true;
-    });
-    sidebar.addEventListener('mouseleave', () => {
-      this.sidebarExpanded = false;
-    });
-  },
 };
 </script>
 
@@ -181,13 +167,4 @@ h5 {
   background: #3a6ea5;
 }
 
-.container.sidebar-expanded {
-  padding-left: 160px; /* Adjust this value to match the expanded sidebar width */
-}
-
-@media (max-width: 992px) {
-  .container.sidebar-expanded {
-    padding-left: 75px; /* Adjust for smaller screens where sidebar is collapsed */
-  }
-}
 </style>
