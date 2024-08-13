@@ -6,16 +6,15 @@
       <h1>Byden Constructions Limited</h1>
       <div class="nav-items">
         <ul :class="{ 'open': isMenuOpen }">
-          <router-link to="/">Home</router-link>
-          <router-link to="/">Resources</router-link>
-          <router-link to="/">Support</router-link>
-          <router-link to="/">Country</router-link>
-          <!-- <router-link to="/products">Shop</router-link> -->
-          <router-link to="/signup">
-          <div class="profile-icon" v-if="!showMenuIcon">
-            <span class="material-symbols-outlined">person</span>
-          </div>
-        </router-link>
+          <li><router-link to="/">Home</router-link></li>
+          <li><router-link to="/">Resources</router-link></li>
+          <li><router-link to="/">Support</router-link></li>
+          <li><router-link to="/">Country</router-link></li>
+          <li><router-link to="/signup">
+            <div class="profile-icon" v-if="!showMenuIcon">
+              <span class="material-symbols-outlined">person</span>
+            </div>
+          </router-link></li>
         </ul>
       </div>
       <div class="menu-icon" @click="toggleMenu" v-if="showMenuIcon">
@@ -28,39 +27,47 @@
 </template>
 
 <script>
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+
 export default {
   name: 'NavBar',
-  data() {
+  setup() {
+    const isMenuOpen = ref(false);
+    const showMenuIcon = ref(false);
+
+    const toggleMenu = () => {
+      isMenuOpen.value = !isMenuOpen.value;
+    };
+
+    const checkScreenSize = () => {
+      showMenuIcon.value = window.innerWidth <= 768;
+      if (window.innerWidth > 768) {
+        isMenuOpen.value = false;
+      }
+    };
+
+    onMounted(() => {
+      checkScreenSize();
+      window.addEventListener('resize', checkScreenSize);
+    });
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('resize', checkScreenSize);
+    });
+
     return {
-      isMenuOpen: false,
-      showMenuIcon: false
+      isMenuOpen,
+      showMenuIcon,
+      toggleMenu,
     };
   },
-  methods: {
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
-    },
-    checkScreenSize() {
-      this.showMenuIcon = window.innerWidth <= 768;
-      if (window.innerWidth > 768) {
-        this.isMenuOpen = false;
-      }
-    },
-  },
-  mounted() {
-    this.checkScreenSize();
-    window.addEventListener('resize', this.checkScreenSize);
-  },
-  beforeUnmount() {
-    window.removeEventListener('resize', this.checkScreenSize);
-  }
 };
 </script>
 
 <style scoped>
 nav {
   background: #d5d5d5;
-  width: 1fr;
+  width: 100%;
   height: 75px;
   top: 0;
   padding: 20px;
@@ -84,6 +91,11 @@ nav {
   gap: 70px;
   list-style: none;
   align-items: center;
+  transition: all 0.3s ease;
+}
+
+.nav-items ul li {
+  list-style: none;
 }
 
 a {
@@ -91,7 +103,7 @@ a {
   color: black;
 }
 
-a:hover{
+a:hover {
   color: red;
 }
 
@@ -105,7 +117,7 @@ a:hover{
   border-radius: 25px;
 }
 
-.profile-icon:hover{
+.profile-icon:hover {
   background: #989998;
 }
 
@@ -157,7 +169,7 @@ a:hover{
     display: flex;
   }
 
-  a:hover{
+  a:hover {
     color: red;
   }
 }

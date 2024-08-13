@@ -80,6 +80,33 @@
                 </div>
               </div>
             </div>
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">View Categories</h5>
+                  <p class="card-text">View Categories</p>
+                  <router-link :to="{ name: 'CategoryPage' }" class="btn btn-primary">View Categories</router-link>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">View Product Colors</h5>
+                  <p class="card-text">View Product Colors</p>
+                  <router-link :to="{ name: 'ColorsPage' }" class="btn btn-primary">View Product Colors</router-link>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">View Product Brands</h5>
+                  <p class="card-text">View Product Brands</p>
+                  <router-link :to="{ name: 'BrandPage' }" class="btn btn-primary">View Product Brands</router-link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

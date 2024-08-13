@@ -18,7 +18,7 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = [
-            'id', 'title', 'description', 'slug', 'price', 'category', 'brand', 
+            'id', 'title', 'description', 'details','slug', 'price', 'category', 'brand', 
             'quantity', 'sold', 'colors', 'image', 'tags', 'total_ratings', 
             'ratings', 'created_at', 'updated_at', 'images', 'image_files'
         ]
@@ -50,6 +50,7 @@ class ProductSerializer(serializers.ModelSerializer):
         # Update fields on the product instance
         instance.title = validated_data.get('title', instance.title)
         instance.description = validated_data.get('description', instance.description)
+        instance.details = validated_data.get('details', instance.details)
         instance.slug = validated_data.get('slug', instance.slug)
         instance.price = validated_data.get('price', instance.price)
         instance.category = validated_data.get('category', instance.category)

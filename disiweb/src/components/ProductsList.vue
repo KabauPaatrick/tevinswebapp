@@ -61,7 +61,7 @@ export default {
     async fetchProducts() {
       try {
        
-        const response = await fetch('http://127.0.0.1:8000/api/products/');
+        const response = await fetch('https://kabau.pythonanywhere.com/api/products/');
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }

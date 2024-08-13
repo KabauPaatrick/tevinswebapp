@@ -52,6 +52,22 @@
           </router-link>
         </li>
         <li>
+          <router-link :to="{name: 'CategoryPage'}">
+            <span class="material-symbols-outlined">category</span>Categories
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{name: 'ColorsPage'}">
+            <span class="material-symbols-outlined">palette</span>Colors
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{name: 'BrandPage'}">
+            <span class="material-symbols-outlined">branding_watermark</span>Branding
+          </router-link>
+        </li>
+        
+        <li>
           <router-link :to="{name: 'AddProduct'}">
             <span class="material-symbols-outlined">Add</span>AddProduct
           </router-link>
@@ -61,6 +77,7 @@
             <span class="material-symbols-outlined">shopping_bag</span>Products
           </router-link>
         </li>
+      
         <li>
           <router-link :to="{ name: 'login' }">
             <span class="material-symbols-outlined">logout</span>Logout

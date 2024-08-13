@@ -140,7 +140,7 @@ export default {
   methods: {
     async fetchProductDetails() {
       const productId = this.$route.params.id;
-      const productUrl = `http://127.0.0.1:8000/api/products/${productId}/`;
+      const productUrl = `https://kabau.pythonanywhere.com/api/products/${productId}/`;
       try {
         const response = await axios.get(productUrl);
         this.product = response.data;

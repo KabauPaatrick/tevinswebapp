@@ -15,7 +15,7 @@
           </div>
           <div class="password-group">
             <div class="checkbox-group">
-              <input type="checkbox">
+              <input type="checkbox" v-model="loginData.rememberMe">
               <label class="label">Remember Me</label>
             </div>
             <a href="" class="forget-password">Forget Password</a>
@@ -35,10 +35,11 @@ import { useRouter } from 'vue-router';
 
 export default {
   setup() {
-    const router = useRouter();  // Initialize the router instance
+    const router = useRouter();
     const loginData = reactive({
       username: '',
-      password: ''
+      password: '',
+      rememberMe: false, // Added rememberMe field
     });
 
     const login = async () => {
@@ -47,12 +48,21 @@ export default {
 
         localStorage.setItem('app_token', response.data.token);
 
+        if (loginData.rememberMe) {
+          localStorage.setItem('username', loginData.username);
+          localStorage.setItem('password', loginData.password);
+        } else {
+          localStorage.removeItem('username');
+          localStorage.removeItem('password');
+        }
+
         console.log('successful', response.data);
 
         loginData.username = '';
         loginData.password = '';
-        
-        router.push({ name: 'admin' });  // Navigate to the 'admin' route
+        loginData.rememberMe = false; // Reset the rememberMe field
+
+        router.push({ name: 'admin' });
       } catch (error) {
         console.error('Error logging in:', error);
       }
@@ -65,7 +75,6 @@ export default {
   }
 }
 </script>
-
 <style scoped>
 .card-container {
   width: 350px;
@@ -207,4 +216,3 @@ export default {
   text-decoration: underline;
 }
 </style>
-

@@ -1,4 +1,4 @@
-#!/home/tev/tevinswebapp/webbackend/webbackendvenv/bin/python3
+#!/home/pato-devops/VueProjects/tevinswebapp/webbackend/webbackendvenv/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys

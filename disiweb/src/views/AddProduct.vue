@@ -20,6 +20,10 @@
                   <textarea id="description" v-model="product.description" class="form-control" required></textarea>
                 </div>
                 <div class="form-group">
+                  <label for="details" class="form-label">Product Details:</label>
+                  <textarea id="details" v-model="product.details" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
                   <label for="slug" class="form-label">Slug:</label>
                   <input type="text" id="slug" v-model="product.slug" class="form-control" required>
                 </div>
@@ -98,6 +102,7 @@
                   <th>Image</th>
                   <th>Title</th>
                   <th>Description</th>
+                  <th>Details</th>
                   <th>Slug</th>
                   <th>Price</th>
                   <th>Category</th>
@@ -115,6 +120,7 @@
                   </td>
                   <td>{{ product.title }}</td>
                   <td>{{ product.description }}</td>
+                  <td>{{ product.details }}</td>
                   <td>{{ product.slug }}</td>
                   <td>{{ product.price }}</td>
                   <td>{{ getCategoryName(product.category) }}</td>
@@ -165,6 +171,7 @@ export default {
       id: '',
       title: '',
       description: '',
+      details:'',
       slug: '',
       price: '',
       category: '',
@@ -234,6 +241,7 @@ export default {
         const formData = new FormData();
         formData.append('title', product.title);
         formData.append('description', product.description);
+        formData.append('details', product.details);
         formData.append('slug', product.slug);
         formData.append('price', product.price);
         formData.append('category', product.category);
@@ -274,6 +282,7 @@ export default {
   product.id = selectedProduct.id;
   product.title = selectedProduct.title;
   product.description = selectedProduct.description;
+  product.details=selectedProduct.details;
   product.slug = selectedProduct.slug;
   product.price = selectedProduct.price;
   product.category = selectedProduct.category;
@@ -290,6 +299,7 @@ export default {
         const formData = new FormData();
         formData.append('title', product.title);
         formData.append('description', product.description);
+        formData.append('details', product.details);
         formData.append('slug', product.slug);
         formData.append('price', product.price);
         formData.append('category', product.category);
@@ -304,7 +314,7 @@ export default {
           formData.append(`images[${index}]`, image); // Append new additional images
         });
 
-        const response = await axios.put(`https://kabau.pythonanywhere.com/api/products/update/${product.id}/`, formData, {
+        const response = await axios.put(`https://kabau.pythonanywhere.com/api/products/${product.id}/update`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
