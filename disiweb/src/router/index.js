@@ -23,7 +23,7 @@ import AddProduct from '@/views/AddProduct.vue';
 import Color from '@/views/ColorPage.vue';
 import Category  from '@/views/CategoryPage.vue';
 import Brand from '@/views/BrandingPage.vue';
-
+import LocationComponent from '@/views/LocationView.vue';
 
 const routes = [
   {
@@ -151,6 +151,11 @@ const routes = [
     path: '/brands',
     name: 'BrandPage',
     component: Brand
+  },
+  {
+    path: '/location',
+    name: 'Location',
+    component: LocationComponent,
   },
 ];
 

@@ -65,6 +65,26 @@
                   <label for="tags" class="form-label">Tags:</label>
                   <input type="text" id="tags" v-model="tagsInput" class="form-control" @input="updateTags">
                 </div>
+                <div class="form-group">
+                  <label for="location" class="form-label">Location:</label>
+                  <TreeSelect
+                    v-model="product.location"
+                    :options="locationOptions"
+                    placeholder="Select Location"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="dropoff" class="form-label">Dropoff Point:</label>
+                  <TreeSelect
+                    v-model="product.dropoff"
+                    :options="dropoffOptions"
+                    placeholder="Select Dropoff Point"
+                    class="form-control"
+                    required
+                  />
+                </div>
               </div>
             </div>
             <div class="row mt-3">
@@ -110,6 +130,8 @@
                   <th>Quantity</th>
                   <th>Colors</th>
                   <th>Tags</th>
+                  <th>Location</th>
+                  <th>Dropoff Point</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -128,6 +150,8 @@
                   <td>{{ product.quantity }}</td>
                   <td>{{ getColorNames(product.colors) }}</td>
                   <td>{{ Array.isArray(product.tags) ? product.tags.join(', ') : '' }}</td>
+                  <td>{{ getLocationName(product.location) }}</td>
+                  <td>{{ getDropoffName(product.dropoff) }}</td>
                   <td class="d-flex">
                     <button @click="deleteProduct(product.id)" class="btn btn-danger mr-2">Delete</button>
                     <button @click="updateProductForm(product)" class="btn btn-primary">Update</button>
@@ -160,11 +184,13 @@
 import { reactive, ref, computed } from 'vue';
 import axios from 'axios';
 import AdminNav from '@/components/AdminNav.vue';
+import TreeSelect from 'vue-tree-select';
 
 export default {
   name: 'NewAdminPage',
   components: {
     AdminNav,
+    TreeSelect,
   },
   setup() {
     const product = reactive({
@@ -180,21 +206,25 @@ export default {
       colors: [],
       tags: [],
       image: null,
-      images: []
+      images: [],
+      location: null,
+      dropoff: null,
     });
 
     const products = ref([]);
     const categories = ref([]);
     const brands = ref([]);
     const colors = ref([]);
-    const tagsInput = ref(''); // For handling tags input
+    const tagsInput = ref('');
+    const locationOptions = ref([]);
+    const dropoffOptions = ref([]);
 
     const currentPage = ref(1);
     const itemsPerPage = 10;
 
     const paginatedProducts = computed(() => {
       const start = (currentPage.value - 1) * itemsPerPage;
-      const end = start + itemsPerPage;
+      const end = start +  itemsPerPage;
       return products.value.slice(start, end);
     });
 
@@ -202,178 +232,177 @@ export default {
       return Math.ceil(products.value.length / itemsPerPage);
     });
 
-    const changePage = (page) => {
-      if (page >= 1 && page <= totalPages.value) {
-        currentPage.value = page;
-      }
-    };
-
-    const fetchOptions = async () => {
+    const fetchCategories = async () => {
       try {
-        const [categoriesRes, brandsRes, colorsRes] = await Promise.all([
-          axios.get('https://kabau.pythonanywhere.com/api/category/list/'),
-          axios.get('https://kabau.pythonanywhere.com/api/brand/show/'),
-          axios.get('https://kabau.pythonanywhere.com/api/color/show/')
-        ]);
-
-        categories.value = categoriesRes.data;
-        brands.value = brandsRes.data;
-        colors.value = colorsRes.data;
+        const response = await axios.get('https://kabau.pythonanywhere.com/api/category/list/', {
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+        });
+        categories.value = response.data;
       } catch (error) {
-        console.error('Error fetching options:', error);
+        console.error('Error fetching categories:', error);
       }
     };
 
-    const handleImageUpload = (event) => {
-      product.image = event.target.files[0]; // Single image upload
-    };
-
-    const handleAdditionalImagesUpload = (event) => {
-      product.images = Array.from(event.target.files); // Multiple images upload
-    };
-
-    const updateTags = () => {
-      product.tags = tagsInput.value.split(',').map(tag => tag.trim());
-    };
-
-    const createProduct = async () => {
+    const fetchBrands = async () => {
       try {
-        const formData = new FormData();
-        formData.append('title', product.title);
-        formData.append('description', product.description);
-        formData.append('details', product.details);
-        formData.append('slug', product.slug);
-        formData.append('price', product.price);
-        formData.append('category', product.category);
-        formData.append('brand', product.brand);
-        formData.append('quantity', product.quantity);
-        formData.append('colors', product.colors);
-        formData.append('tags', JSON.stringify(product.tags));
-        formData.append('image', product.image); // Single image
-
-        product.images.forEach((image, index) => {
-          formData.append(`images[${index}]`, image); // Multiple images
+        const response = await axios.get('https://kabau.pythonanywhere.com/api/brand/show/', {
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
         });
-
-        const response = await axios.post('https://kabau.pythonanywhere.com/api/products/create/', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-
-        console.log('Product created:', response.data);
-        products.value.push(response.data);
-        resetForm();
+        brands.value = response.data;
       } catch (error) {
-        console.error('Error creating product:', error);
+        console.error('Error fetching brands:', error);
       }
     };
 
-    const deleteProduct = async (id) => {
+    const fetchColors = async () => {
       try {
-        await axios.delete(`https://kabau.pythonanywhere.com/api/products/${id}/delete/`);
-        products.value = products.value.filter(product => product.id !== id);
+        const response = await axios.get('https://kabau.pythonanywhere.com/api/color/show/', {
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+        });
+        colors.value = response.data;
       } catch (error) {
-        console.error('Error deleting product:', error);
+        console.error('Error fetching colors:', error);
       }
     };
 
-    const updateProductForm = (selectedProduct) => {
-  product.id = selectedProduct.id;
-  product.title = selectedProduct.title;
-  product.description = selectedProduct.description;
-  product.details=selectedProduct.details;
-  product.slug = selectedProduct.slug;
-  product.price = selectedProduct.price;
-  product.category = selectedProduct.category;
-  product.brand = selectedProduct.brand;
-  product.quantity = selectedProduct.quantity;
-  product.colors = selectedProduct.colors;
-  product.tags = selectedProduct.tags;
-  product.image = null; // Reset to null for new image upload
-  product.images = []; // Reset to empty for new additional images upload
-};
-
-    const updateProduct = async () => {
+    const fetchLocations = async () => {
       try {
-        const formData = new FormData();
-        formData.append('title', product.title);
-        formData.append('description', product.description);
-        formData.append('details', product.details);
-        formData.append('slug', product.slug);
-        formData.append('price', product.price);
-        formData.append('category', product.category);
-        formData.append('brand', product.brand);
-        formData.append('quantity', product.quantity);
-        formData.append('colors', JSON.stringify(product.colors));
-        formData.append('tags', JSON.stringify(product.tags));
-        if (product.image) {
-          formData.append('image', product.image); // Only append if a new image is uploaded
-        }
-        product.images.forEach((image, index) => {
-          formData.append(`images[${index}]`, image); // Append new additional images
+        const response = await axios.get('https://kabau.pythonanywhere.com/api/location/locations/', {
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
         });
-
-        const response = await axios.put(`https://kabau.pythonanywhere.com/api/products/${product.id}/update`, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-
-        console.log('Product updated:', response.data);
-        const index = products.value.findIndex(prod => prod.id === product.id);
-        if (index !== -1) {
-          products.value[index] = response.data;
-        }
-        resetForm();
+        locationOptions.value = response.data;
       } catch (error) {
-        console.error('Error updating product:', error);
+        console.error('Error fetching locations:', error);
       }
     };
 
-    const getCategoryName = (categoryId) => {
-      const category = categories.value.find(category => category.id === categoryId);
-      return category ? category.title : 'Unknown';
-    };
-
-    const getBrandName = (brandId) => {
-      const brand = brands.value.find(brand => brand.id === brandId);
-      return brand ? brand.title : 'Unknown';
-    };
-
-    const getColorNames = (colorIds) => {
-      const colorNames = colors.value
-        .filter(color => colorIds.includes(color.id))
-        .map(color => color.title);
-      return colorNames.join(', ');
-    };
-
-    const resetForm = () => {
-      product.id = '';
-      product.title = '';
-      product.description = '';
-      product.slug = '';
-      product.price = '';
-      product.category = '';
-      product.brand = '';
-      product.quantity = 0;
-      product.colors = [];
-      product.tags = [];
-      product.image = null;
-      product.images = [];
+    const fetchDropoffs = async () => {
+      try {
+        const response = await axios.get('https://kabau.pythonanywhere.com/api/location/dropoff-points/', {
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+        });
+        dropoffOptions.value = response.data;
+      } catch (error) {
+        console.error('Error fetching dropoffs:', error);
+      }
     };
 
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('https://kabau.pythonanywhere.com/api/products/list/');
+        const response = await axios.get('https://kabau.pythonanywhere.com/api/products/', {
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+        });
         products.value = response.data;
       } catch (error) {
         console.error('Error fetching products:', error);
       }
     };
 
-    // Fetch data when component is mounted
-    fetchOptions();
+    const createProduct = async () => {
+      const formData = new FormData();
+      formData.append('title', product.title);
+      formData.append('description', product.description);
+      formData.append('details', product.details);
+      formData.append('slug', product.slug);
+      formData.append('price', product.price);
+      formData.append('category', product.category);
+      formData.append('brand', product.brand);
+      formData.append('quantity', product.quantity);
+      formData.append('colors', product.colors.join(','));
+      formData.append('tags', product.tags.join(','));
+      formData.append('location', product.location);
+      formData.append('dropoff', product.dropoff);
+      if (product.image) {
+        formData.append('image', product.image);
+      }
+      for (let i = 0; i < product.images.length; i++) {
+        formData.append('images', product.images[i]);
+      }
+
+      try {
+        await axios.post('https://kabau.pythonanywhere.com/api/products/', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+        fetchProducts(); // Refresh the product list
+      } catch (error) {
+        console.error('Error creating product:', error);
+      }
+    };
+
+    const handleImageUpload = (event) => {
+      product.image = event.target.files[0];
+    };
+
+    const handleAdditionalImagesUpload = (event) => {
+      product.images = Array.from(event.target.files);
+    };
+
+    const updateProduct = async () => {
+      // Implement product update logic here
+    };
+
+    const deleteProduct = async (id) => {
+      try {
+        await axios.delete(`https://kabau.pythonanywhere.com/api/products/${id}/`, {
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+        });
+        fetchProducts(); // Refresh the product list
+      } catch (error) {
+        console.error('Error deleting product:', error);
+      }
+    };
+
+    const updateProductForm = (productData) => {
+      Object.assign(product, productData);
+    };
+
+    const changePage = (page) => {
+      if (page > 0 && page <= totalPages.value) {
+        currentPage.value = page;
+      }
+    };
+
+    const getCategoryName = (id) => {
+      const category = categories.value.find(cat => cat.id === id);
+      return category ? category.title : '';
+    };
+
+    const getBrandName = (id) => {
+      const brand = brands.value.find(b => b.id === id);
+      return brand ? brand.title : '';
+    };
+
+    const getColorNames = (ids) => {
+      return ids.map(id => {
+        const color = colors.value.find(c => c.id === id);
+        return color ? color.title : '';
+      }).join(', ');
+    };
+
+    const getLocationName = (id) => {
+      const location = locationOptions.value.find(loc => loc.id === id);
+      return location ? location.title : '';
+    };
+
+    const getDropoffName = (id) => {
+      const dropoff = dropoffOptions.value.find(d => d.id === id);
+      return dropoff ? dropoff.title : '';
+    };
+
+    const updateTags = (event) => {
+      const tags = event.target.value.split(',').map(tag => tag.trim()).filter(tag => tag);
+      product.tags = tags;
+    };
+
+    // Fetch initial data
+    fetchCategories();
+    fetchBrands();
+    fetchColors();
+    fetchLocations();
+    fetchDropoffs();
     fetchProducts();
 
     return {
@@ -383,49 +412,52 @@ export default {
       brands,
       colors,
       tagsInput,
+      locationOptions,
+      dropoffOptions,
+      paginatedProducts,
+      totalPages,
+      currentPage,
       createProduct,
+      handleImageUpload,
+      handleAdditionalImagesUpload,
+      updateProduct,
       deleteProduct,
       updateProductForm,
-      updateProduct,
+      changePage,
       getCategoryName,
       getBrandName,
       getColorNames,
-      paginatedProducts,
-      currentPage,
-      totalPages,
-      changePage,
-      handleImageUpload,
-      handleAdditionalImagesUpload,
+      getLocationName,
+      getDropoffName,
       updateTags,
     };
   },
 };
 </script>
 
-
 <style scoped>
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .card {
   margin-bottom: 20px;
 }
 
-.form-label {
-  font-weight: bold;
+.page-item.disabled .page-link {
+  pointer-events: none;
+  cursor: default;
 }
 
-.form-control {
-  margin-bottom: 10px;
+.page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
 }
 
-.table th, .table td {
-  vertical-align: middle;
-}
-
-.btn {
-  margin-right: 10px;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
+.page-link {
+  cursor: pointer;
 }
 </style>
+

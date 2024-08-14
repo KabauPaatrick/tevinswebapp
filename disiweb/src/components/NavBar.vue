@@ -10,9 +10,10 @@
           <li><router-link to="/">Resources</router-link></li>
           <li><router-link to="/">Support</router-link></li>
           <li><router-link to="/">Country</router-link></li>
+          <li><router-link to="/products">Products/services</router-link></li>
           <li><router-link to="/signup">
-            <div class="profile-icon" v-if="!showMenuIcon">
-              <span class="material-symbols-outlined">person</span>
+            <div class="profile-icon">
+              <span class="material-symbols-outlined">person</span>Admin
             </div>
           </router-link></li>
         </ul>

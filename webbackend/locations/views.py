@@ -1,11 +1,12 @@
 # locations/views.py
 from rest_framework import viewsets
-from .models import Location
-from .serializers import LocationSerializer
+from .models import Location, DropOffPoint
+from .serializers import LocationSerializer, DropOffPointSerializer
 
 class LocationViewSet(viewsets.ModelViewSet):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
 
-
-# Create your views here.
+class DropOffPointViewSet(viewsets.ModelViewSet):
+    queryset = DropOffPoint.objects.all()
+    serializer_class = DropOffPointSerializer

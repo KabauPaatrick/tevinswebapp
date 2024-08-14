@@ -42,10 +42,11 @@
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'licenses' }">
-            <span class="material-symbols-outlined">contract</span>Licences
+          <router-link :to="{ name: 'Location' }">
+            <span class="material-symbols-outlined">pin_drop</span>Location
           </router-link>
         </li>
+        
         <li>
           <router-link :to="{name: 'OrdersPage'}">
             <span class="material-symbols-outlined">shopping_cart</span>Orders
