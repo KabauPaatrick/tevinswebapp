@@ -71,7 +71,8 @@ INSTALLED_APPS = [
     'colors',
     'Enquiry',
     'payments',
-    'FileUpload'
+    'FileUpload',
+    'locations'
 
 ]
 CLOUDINARY_STORAGE = {
@@ -123,17 +124,15 @@ WSGI_APPLICATION = "webbackend.wsgi.application"
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'disiweb',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'Pato@254',
         'HOST': 'localhost',
         'PORT': '3306',
-        # 'OPTIONS': {
-        #     'unix_socket': '/var/run/mysqld/mysqld.sock',  
-        # },
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

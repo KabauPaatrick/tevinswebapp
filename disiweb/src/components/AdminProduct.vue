@@ -45,7 +45,7 @@ export default {
   methods: {
     async fetchProducts() {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/products/');
+        const response = await fetch('https://kabau.pythonanywhere.com/api/products/');
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }
@@ -66,7 +66,7 @@ export default {
       if (this.itemToDelete) {
         const productId = this.itemToDelete.id;
         // send DELETE request to API
-        fetch(`http://127.0.0.1:8000/api/products/${productId}`, {
+        fetch(`https://kabau.pythonanywhere.com/api/products/${productId}`, {
           method: 'DELETE'
         })
         .then(response => {

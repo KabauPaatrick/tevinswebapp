@@ -20,6 +20,11 @@ import AddtoCartPage from '@/views/AddtoCartPage.vue';
 import AdminProductPage from '@/views/AdminProductPage.vue';
 import EditProductPage from '@/views/EditProductPage.vue';
 import AddProduct from '@/views/AddProduct.vue';
+import Color from '@/views/ColorPage.vue';
+import Category  from '@/views/CategoryPage.vue';
+import Brand from '@/views/BrandingPage.vue';
+import LocationComponent from '@/views/LocationView.vue';
+
 const routes = [
   {
     path: '/',
@@ -131,6 +136,26 @@ const routes = [
     path: '/editproduct/:id',
     name: 'EditProductPage',
     component: EditProductPage
+  },
+  {
+    path: '/category',
+    name: 'CategoryPage',
+    component: Category
+  },
+  {
+    path: '/colors',
+    name: 'ColorsPage',
+    component: Color
+  },
+  {
+    path: '/brands',
+    name: 'BrandPage',
+    component: Brand
+  },
+  {
+    path: '/location',
+    name: 'Location',
+    component: LocationComponent,
   },
 ];
 

@@ -87,13 +87,9 @@
 
     <div class="products-description">
       <h3 id="product-details">Product Details</h3>
-      <hr class="solid">
+      <hr class="solid" />
       <ul id="prod-list">
-        <li>JBL signature sound with PureBass performance and premium 50mm drivers deliver full spectrum sound with uninhibited clarity and powerful bass. Connectivity Technology: Wireless</li>
-        <li>Bluetooth enabled technology for wireless calling and music play. Built-in Share Me technology allows you to share your content with another set of headphones, simultaneously</li>
-        <li>Ear-cup-based microphone with echo-cancelation technology allows for hands-free calling with a pure connection to your wireless device for clear, hands free calling</li>
-        <li>Built-in, USB rechargeable lithium-ion battery provides 16 hours of uninterrupted listening. And when the battery dies, the included aux cable allows for passive listening</li>
-        <li>Ergonomic headband and protein leather ear-cushions provide an ultra-comfortable fit and effective noise isolation</li>
+        <li v-for="(detail, index) in product.details" :key="index">{{ detail }}</li>
       </ul>
     </div>
 
@@ -131,7 +127,8 @@ export default {
   data() {
     return {
       product: {},
-      quantity: 1
+      quantity: 1,
+      details:[],
     };
   },
   mounted() {
@@ -139,15 +136,19 @@ export default {
   },
   methods: {
     async fetchProductDetails() {
-      const productId = this.$route.params.id;
-      const productUrl = `http://127.0.0.1:8000/api/products/${productId}/`;
-      try {
-        const response = await axios.get(productUrl);
-        this.product = response.data;
-      } catch (error) {
-        console.error('Error fetching product details:', error);
-      }
-    },
+  const productId = this.$route.params.id;
+  const productUrl = `https://kabau.pythonanywhere.com/api/products/${productId}/`;
+  try {
+    const response = await axios.get(productUrl);
+    this.product = response.data;
+  } catch (error) {
+    console.error('Error fetching product details:', error);
+    if (error.response && error.response.status === 404) {
+      alert('Product not found.');
+      this.$router.push('/not-found');
+    }
+  }
+},
     displayImage(image, index) {
       const cartImage = document.getElementById('cartimage');
       cartImage.src = image;
