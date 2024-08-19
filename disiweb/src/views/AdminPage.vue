@@ -1,6 +1,8 @@
 <template>
   <div>
+    
     <AdminNav />
+    <Admintop />
     <h1 class="text-center mb-4">Admin Dashboard</h1>
     <div class="container mt-5" >
       <div class="main-card">
@@ -116,11 +118,13 @@
 
 <script>
 import AdminNav from '@/components/AdminNav.vue';
+import Admintop from '@/components/Admintop.vue';
 
 export default {
   name: 'NewAdminNPage',
   components: {
     AdminNav,
+    Admintop
   },
 };
 </script>
@@ -133,6 +137,7 @@ body {
 }
 
 h1 {
+  margin-top: 40px;
   color: black;
 }
 
