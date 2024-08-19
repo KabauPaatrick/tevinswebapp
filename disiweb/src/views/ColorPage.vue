@@ -1,6 +1,7 @@
 <template>
     <div>
       <AdminNav />
+      <Admintop />
       <div class="container mt-5">
         <!-- Color Form -->
         <div class="card mb-4">
@@ -58,11 +59,13 @@
   import { reactive, ref, onMounted } from 'vue';
   import axios from 'axios';
   import AdminNav from '@/components/AdminNav.vue';
+  import Admintop from '@/components/Admintop.vue';
   
   export default {
     name: 'ColorPage',
     components: {
       AdminNav,
+      Admintop
     },
     setup() {
       const color = reactive({

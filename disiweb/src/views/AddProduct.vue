@@ -1,6 +1,7 @@
 <template>
   <div>
     <AdminNav />
+    <Admintop />
     <div class="container mt-5">
       <!-- Product Form -->
       <div class="card mb-4">
@@ -184,12 +185,14 @@
 import { reactive, ref, computed } from 'vue';
 import axios from 'axios';
 import AdminNav from '@/components/AdminNav.vue';
+import Admintop from '@/components/Admintop.vue';
 import TreeSelect from 'vue-tree-select';
 
 export default {
   name: 'NewAdminPage',
   components: {
     AdminNav,
+    Admintop,
     TreeSelect,
   },
   setup() {

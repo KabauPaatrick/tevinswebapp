@@ -1,6 +1,7 @@
 <template>
     <div>
         <AdminNav />
+        <Admintop />
         <div class="container mt-5">
             <!-- Achievement Form -->
             <div class="card mb-4">
@@ -163,6 +164,7 @@
 import { reactive, onMounted, ref } from 'vue';
 import axios from 'axios';
 import AdminNav from '@/components/AdminNav.vue';
+import Admintop from '@/components/Admintop.vue';
 
 // Define formatDate function outside of the setup function
 const formatDate = (dateString) => {
@@ -173,6 +175,7 @@ export default {
     name: 'NewAdminNPage',
     components: {
         AdminNav,
+        Admintop
     },
     setup() {
         const achievement = reactive({

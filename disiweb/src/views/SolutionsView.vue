@@ -1,6 +1,7 @@
 <template>
   <div>
     <AdminNav />
+    <Admintop />
     <div class="container mt-5">
       <!-- Solution Form -->
       <div class="card mb-4">
@@ -112,11 +113,13 @@
   import { reactive, onMounted, ref } from 'vue';
   import axios from 'axios';
   import AdminNav from '@/components/AdminNav.vue';
+  import Admintop from '@/components/Admintop.vue';
   
   export default {
     name: 'NewAdminNPage', 
     components: {
       AdminNav,
+      Admintop
     },
     setup() {
       const solution = reactive({

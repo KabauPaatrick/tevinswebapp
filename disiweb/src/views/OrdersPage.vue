@@ -1,6 +1,7 @@
 <template>
     <div>
     <AdminNav />
+    <Admintop />
     <div class="container mt-5"></div>
         <div class="card">
             <div class="card-header">
@@ -58,10 +59,12 @@
 import { reactive, onMounted } from 'vue';
 import axios from 'axios';
 import AdminNav from '@/components/AdminNav.vue';
+import Admintop from '@/components/Admintop.vue';
 
 export default {
     components: {
-    AdminNav
+    AdminNav,
+    Admintop
   },
     setup() {
         const formatDate = (dateString) => {
