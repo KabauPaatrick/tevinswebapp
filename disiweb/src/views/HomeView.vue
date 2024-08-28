@@ -1,36 +1,11 @@
 <template>
-  <div class="landing-page">
-    <header>
-      <slot name="logo"></slot>
-      <NavBar />
-    </header>
-
-    <main>
-      <div>
-        <Hero v-if="heroContent" :content="heroContent" />
-      </div>
-
-      <div>
-        <Benefits />
-      </div>
-
-      <div>
-        <OurAchievements />
-      </div>
-
-      <div>
-        <LicenseViewVue />
-      </div>
-
-      <div>
-        <Testimonials v-if="testimonialsList" :list="testimonialsList" />
-      </div>
-
-      <div>
-        <LeadCapture v-if="leadCaptureForm" :buttonText="leadCaptureButtonText" />
-      </div>
-    </main>
-
+  <div class="homepage">
+    <NavBar />
+    <HeroComp />
+    <OurServicesComp />
+    <TestimonialsComp />
+    <ContactUsComp />
+    
     <footer>
       <p>&copy; {{ year }} Byden Construction and Services</p>
     </footer>
@@ -41,52 +16,24 @@
 
 <script>
 import { ref } from 'vue';
-import Hero from '@/views/HeroPage.vue';
-import Benefits from '@/views/BenefitsPage.vue';
-import Testimonials from '@/views/TestimonialsPage.vue';
-import LeadCapture from '@/views/LeadCapturePage.vue';
+import ContactUsComp from '@/components/ContactUsComp.vue';
+import HeroComp from '@/components/HeroComp.vue';
 import NavBar from '@/components/NavBar.vue';
-import OurAchievements from './OurAchievements.vue';
-import LicenseViewVue from './LicenseView.vue';
+import OurServicesComp from '@/components/OurServicesComp.vue';
+import TestimonialsComp from '@/components/TestimonialsComp.vue';
 
 export default {
+  name: 'HomePage',
   components: {
-    Hero,
-    Benefits,
-    Testimonials,
-    LeadCapture,
     NavBar,
-    OurAchievements,
-    LicenseViewVue,
+    HeroComp,
+    OurServicesComp,
+    TestimonialsComp,
+    ContactUsComp
   },
   setup() {
-    const heroContent = ref({
-      title: "Your Company Name",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      ctaText: "Learn more",
-      imageUrl: require("../assets/images/HeroImage.png"),
-    });
-    const testimonialsList = ref([
-      { name: "Testimonial 1", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-      { name: "Testimonial 2", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-    ]);
-    const leadCaptureForm = ref("Lead Capture");
-    const leadCaptureButtonText = ref("Learn from us");
     const year = ref(new Date().getFullYear());
     const showChatWidget = ref(false);
-
-    const setHeroContent = (content) => {
-      heroContent.value = content;
-    };
-
-    const setTestimonialsList = (list) => {
-      testimonialsList.value = list;
-    };
-
-    const setLeadCaptureForm = (form, buttonText) => {
-      leadCaptureForm.value = form;
-      leadCaptureButtonText.value = buttonText;
-    };
 
     const loadTawkToWidget = () => {
       if (typeof Tawk_API === "undefined") {
@@ -102,26 +49,30 @@ export default {
     loadTawkToWidget();
 
     return {
-      heroContent,
-      testimonialsList,
-      leadCaptureForm,
-      leadCaptureButtonText,
       year,
-      setHeroContent,
-      setTestimonialsList,
-      setLeadCaptureForm,
       showChatWidget,
     };
-  },
+  }
 };
 </script>
 
 <style scoped>
-*{
+.homepage {
   overflow: hidden;
+  background: #bdbdbf;
 }
 
-.landing-page{
-  background: #cacbd5;
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #1769FF;
+  color: white;
+}
+
+#tawkWidget {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
 }
 </style>
